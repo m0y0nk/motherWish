@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings | Medi-Connect</title>
+    <meta name="description"
+        content="Manage your Medi-Connect profile, change password, toggle dark mode, configure notifications, and set language preferences.">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <meta name="theme-color" content="#2472d8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Medi-Connect">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='icons/icon-192.svg') }}">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="home.html" class="logo">
+            <div class="logo-icon"><svg viewBox="0 0 24 24">
+                    <rect x="10" y="7" width="4" height="10" rx="1" />
+                    <rect x="7" y="10" width="10" height="4" rx="1" />
+                </svg></div>
+            <span class="logo-text">Medi-Connect</span>
+        </a>
+        <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+        <div class="nav-links" id="navLinks">
+            <a href="home.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="insurance.html">Insurance</a>
+            <a href="categories.html">Categories</a>
+            <a href="selfcare.html">Self Care</a>
+            <a href="appointment.html">Book Appointment</a>
+            <a href="medicines.html">My Medicines</a>`n            <a href="help.html">Help</a>
+        </div>
+        <div class="nav-right">
+            <div class="search-bar">
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zM9.5 14A4.5 4.5 0 1114 9.5 4.494 4.494 0 019.5 14z" />
+                </svg>
+                <input type="text" placeholder="Search doctors & hospitals...">
+            </div>
+            <button class="btn btn-primary" id="authBtn"
+                onclick="document.getElementById('loginModal').style.display='flex'">Login / Sign Up</button>
+            <a href="settings.html" class="settings-icon" title="Settings"
+                style="background:#e8f0fe;color:var(--primary)">⚙️</a>
+        </div>
+    </nav>
+
+    <!-- SETTINGS -->
+    <section>
+        <div class="section-title">⚙️ Settings</div>
+        <div class="section-sub">Manage your profile, preferences & account</div>
+        <div class="settings-grid">
+
+            <!-- Profile -->
+            <div class="settings-card">
+                <h4>👤 Profile Settings</h4>
+                <div class="settings-form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="profileName" placeholder="Enter your name">
+                </div>
+                <div class="settings-form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="profileEmail" placeholder="your@email.com">
+                </div>
+                <div class="settings-form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" id="profilePhone" placeholder="+91 XXXXX XXXXX">
+                </div>
+                <div class="settings-form-group">
+                    <label>City</label>
+                    <input type="text" id="profileCity" placeholder="Your city">
+                </div>
+                <button class="btn btn-primary" style="width:100%;margin-top:8px" onclick="saveProfile()">💾 Save
+                    Profile</button>
+            </div>
+
+            <!-- Password -->
+            <div class="settings-card">
+                <h4>🔒 Change Password</h4>
+                <div class="settings-form-group">
+                    <label>Current Password</label>
+                    <input type="password" id="currentPass" placeholder="Enter current password">
+                </div>
+                <div class="settings-form-group">
+                    <label>New Password</label>
+                    <input type="password" id="newPass" placeholder="At least 6 characters">
+                </div>
+                <div class="settings-form-group">
+                    <label>Confirm New Password</label>
+                    <input type="password" id="confirmNewPass" placeholder="Re-enter new password">
+                </div>
+                <button class="btn btn-primary" style="width:100%;margin-top:8px" onclick="changePassword()">🔄 Update
+                    Password</button>
+            </div>
+
+            <!-- Appearance -->
+            <div class="settings-card">
+                <h4>🎨 Appearance</h4>
+                <div class="settings-item">
+                    <span>🌙 Dark Mode</span>
+                    <div class="toggle off" id="darkModeToggle" onclick="toggleDarkMode()"></div>
+                </div>
+                <div class="settings-item">
+                    <span>🔤 Font Size</span>
+                    <select class="lang-sel" onchange="showNotif('Font size: ' + this.value)">
+                        <option>Normal</option>
+                        <option>Large</option>
+                        <option>Extra Large</option>
+                    </select>
+                </div>
+                <div class="settings-item">
+                    <span>🎨 Theme Color</span>
+                    <select class="lang-sel" onchange="showNotif('Theme: ' + this.value)">
+                        <option>Blue & Green (Default)</option>
+                        <option>Purple & Teal</option>
+                        <option>Orange & Blue</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Notifications -->
+            <div class="settings-card">
+                <h4>🔔 Notifications</h4>
+                <div class="settings-item">
+                    <span>📅 Appointment Reminders</span>
+                    <div class="toggle"
+                        onclick="this.classList.toggle('off');showNotif(this.classList.contains('off')?'Appointment reminders disabled':'Appointment reminders enabled')">
+                    </div>
+                </div>
+                <div class="settings-item">
+                    <span>🩸 Blood Bank Alerts</span>
+                    <div class="toggle"
+                        onclick="this.classList.toggle('off');showNotif(this.classList.contains('off')?'Blood bank alerts disabled':'Blood bank alerts enabled')">
+                    </div>
+                </div>
+                <div class="settings-item">
+                    <span>🔬 Lab Report Updates</span>
+                    <div class="toggle"
+                        onclick="this.classList.toggle('off');showNotif(this.classList.contains('off')?'Lab alerts disabled':'Lab alerts enabled')">
+                    </div>
+                </div>
+                <div class="settings-item">
+                    <span>💊 Medicine Reminders</span>
+                    <div class="toggle"
+                        onclick="this.classList.toggle('off');showNotif(this.classList.contains('off')?'Medicine reminders disabled':'Medicine reminders enabled')">
+                    </div>
+                </div>
+                <div class="settings-item">
+                    <span>💡 Health Tips</span>
+                    <div class="toggle off"
+                        onclick="this.classList.toggle('off');showNotif(this.classList.contains('off')?'Health tips disabled':'Health tips enabled')">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Language -->
+            <div class="settings-card">
+                <h4>🌐 Language & Region</h4>
+                <div class="settings-item">
+                    <span>🗣️ App Language</span>
+                    <select class="lang-sel" onchange="showNotif('Language: ' + this.value)">
+                        <option>🇬🇧 English</option>
+                        <option>🇮🇳 हिंदी (Hindi)</option>
+                        <option>🇮🇳 ಕನ್ನಡ (Kannada)</option>
+                        <option>🇮🇳 தமிழ் (Tamil)</option>
+                        <option>🇮🇳 తెలుగు (Telugu)</option>
+                        <option>🇮🇳 മലയാളം (Malayalam)</option>
+                    </select>
+                </div>
+                <div class="settings-item">
+                    <span>📍 Default City</span>
+                    <select class="lang-sel" onchange="showNotif('City: ' + this.value)">
+                        <option>Bangalore</option>
+                        <option>Delhi</option>
+                        <option>Mumbai</option>
+                        <option>Chennai</option>
+                        <option>Hyderabad</option>
+                        <option>Kolkata</option>
+                        <option>Pune</option>
+                        <option>Gurugram</option>
+                    </select>
+                </div>
+                <div class="settings-item">
+                    <span>🏥 Preferred Hospital</span>
+                    <select class="lang-sel" onchange="showNotif('Hospital: ' + this.value)">
+                        <option>No Preference</option>
+                        <option>Apollo Hospitals</option>
+                        <option>Fortis Hospital</option>
+                        <option>AIIMS New Delhi</option>
+                        <option>Narayana Health</option>
+                        <option>Manipal Hospital</option>
+                        <option>Max Healthcare</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Account Actions -->
+            <div class="settings-card">
+                <h4>⚡ Account</h4>
+                <div class="settings-item">
+                    <span>📥 Download My Data</span>
+                    <button class="btn btn-outline" style="padding:6px 14px;font-size:0.8rem"
+                        onclick="showNotif('📥 Preparing your data download...')">Download</button>
+                </div>
+                <div class="settings-item">
+                    <span>🔗 Connected Devices</span>
+                    <span style="font-size:0.82rem;color:var(--secondary);font-weight:600">1 Device</span>
+                </div>
+                <div class="settings-item">
+                    <span>📋 Terms of Service</span>
+                    <button class="btn btn-outline" style="padding:6px 14px;font-size:0.8rem"
+                        onclick="showNotif('Opening Terms of Service...')">View</button>
+                </div>
+                <div style="margin-top:16px;display:flex;gap:10px">
+                    <button class="btn btn-danger" style="flex:1" onclick="doLogout()">🚪 Logout</button>
+                    <button class="btn"
+                        style="flex:1;background:#ffebee;color:var(--accent);border:1.5px solid var(--accent)"
+                        onclick="if(confirm('Are you sure you want to delete your account? This cannot be undone.')){localStorage.clear();showNotif('Account deleted.');setTimeout(()=>window.location.href='home.html',1500)}">🗑️
+                        Delete Account</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo" style="margin-bottom:12px">
+                    <div class="logo-icon"><svg viewBox="0 0 24 24">
+                            <rect x="10" y="7" width="4" height="10" rx="1" />
+                            <rect x="7" y="10" width="10" height="4" rx="1" />
+                        </svg></div>
+                    <span class="logo-text" style="-webkit-text-fill-color:white">Medi-Connect</span>
+                </div>
+                <p>India's most trusted digital healthcare platform.</p>
+            </div>
+            <div class="footer-col">
+                <h5>Services</h5><a href="appointment.html">Book Appointment</a><a href="home.html">Emergency</a><a
+                    href="home.html">Blood Bank</a>
+            </div>
+            <div class="footer-col">
+                <h5>Hospitals</h5><a href="categories.html">Apollo</a><a href="categories.html">Fortis</a><a
+                    href="categories.html">AIIMS</a>
+            </div>
+            <div class="footer-col">
+                <h5>Support</h5><a href="help.html">Help Center</a><a href="help.html">Contact Us</a><a href="#">Privacy
+                    Policy</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Medi-Connect. All rights reserved. | Made with ❤️ in India</p>
+        </div>
+    </footer>
+
+    <!-- LOGIN MODAL -->
+    <div class="modal-overlay" id="loginModal" style="display:none"
+        onclick="if(event.target===this)this.style.display='none'">
+        <div class="modal-box login-modal">
+            <h2>Welcome to Medi-Connect</h2>
+            <div class="tabs"><button class="tab-btn2 active" id="loginTabBtn"
+                    onclick="switchAuthTab('login')">Login</button><button class="tab-btn2" id="signupTabBtn"
+                    onclick="switchAuthTab('signup')">Sign Up</button></div>
+            <div id="loginForm">
+                <div class="login-form"><input type="email" placeholder="Email address" id="loginEmail"><input
+                        type="password" placeholder="Password" id="loginPassword"><button class="btn btn-primary"
+                        style="width:100%;padding:12px" onclick="doLogin()">Login</button></div>
+            </div>
+            <div id="signupForm" style="display:none">
+                <div class="login-form"><input type="text" placeholder="Full Name" id="signupName"><input type="tel"
+                        placeholder="Mobile Number" id="signupMobile"><input type="password" placeholder="Password"
+                        id="signupPassword"><input type="password" placeholder="Confirm Password"
+                        id="signupConfirm"><button class="btn btn-secondary" style="width:100%;padding:12px"
+                        onclick="doSignup()">Create Account</button></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="notif" id="notif"></div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>

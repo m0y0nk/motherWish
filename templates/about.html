@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Medi-Connect | Our Mission & Story</title>
+    <meta name="description"
+        content="Learn about Medi-Connect's mission to make healthcare accessible. Discover our story, vision, and the team behind India's trusted healthcare platform.">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <meta name="theme-color" content="#2472d8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Medi-Connect">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='icons/icon-192.svg') }}">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="home.html" class="logo">
+            <div class="logo-icon"><svg viewBox="0 0 24 24">
+                    <rect x="10" y="7" width="4" height="10" rx="1" />
+                    <rect x="7" y="10" width="10" height="4" rx="1" />
+                </svg></div>
+            <span class="logo-text">Medi-Connect</span>
+        </a>
+        <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+        <div class="nav-links" id="navLinks">
+            <a href="home.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="insurance.html">Insurance</a>
+            <a href="categories.html">Categories</a>
+            <a href="selfcare.html">Self Care</a>
+            <a href="appointment.html">Book Appointment</a>
+            <a href="medicines.html">My Medicines</a>`n <a href="help.html">Help</a>
+        </div>
+        <div class="nav-right">
+            <div class="search-bar">
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zM9.5 14A4.5 4.5 0 1114 9.5 4.494 4.494 0 019.5 14z" />
+                </svg>
+                <input type="text" placeholder="Search doctors & hospitals...">
+            </div>
+            <button class="btn btn-primary" id="authBtn"
+                onclick="document.getElementById('loginModal').style.display='flex'">Login / Sign Up</button>
+            <a href="settings.html" class="settings-icon" title="Settings">⚙️</a>
+        </div>
+    </nav>
+
+    <!-- ABOUT HERO -->
+    <div class="about-hero">
+        <h1>About Medi-Connect</h1>
+        <p>Transforming healthcare access for every Indian — one connection at a time.</p>
+    </div>
+
+    <!-- MISSION & VISION -->
+    <section>
+        <div class="section-title">🎯 Our Mission & Vision</div>
+        <div class="section-sub">What drives us every day to make healthcare better</div>
+        <div class="about-grid">
+            <div class="about-card">
+                <h3>🎯 Our Mission</h3>
+                <p>To make quality healthcare accessible, affordable, and convenient for every Indian citizen. We bridge
+                    the gap between patients and healthcare providers through innovative digital solutions.</p>
+            </div>
+            <div class="about-card" style="border-left-color: var(--secondary)">
+                <h3>🔭 Our Vision</h3>
+                <p>To become India's most trusted digital healthcare ecosystem — empowering 1 billion+ people with
+                    instant access to doctors, hospitals, emergency care, and health management tools.</p>
+            </div>
+            <div class="about-card" style="border-left-color: #ff9800">
+                <h3>📅 Instant Appointments</h3>
+                <p>Book appointments with 20+ verified specialists across 10+ hospitals. Get real-time OPD queue numbers
+                    and QR-code based check-in — no more long waiting lines.</p>
+            </div>
+            <div class="about-card" style="border-left-color: #e91e63">
+                <h3>🚑 Emergency Response</h3>
+                <p>One-tap access to 108 ambulance services. Live ambulance tracking, blood bank availability, and
+                    AI-powered route optimization for the fastest emergency response.</p>
+            </div>
+            <div class="about-card" style="border-left-color: #9c27b0">
+                <h3>🩺 Doctor Network</h3>
+                <p>A curated network of India's best doctors from Apollo, Fortis, AIIMS, Narayana Health, and more.
+                    Filter by specialization, experience, fees, and patient ratings.</p>
+            </div>
+            <div class="about-card" style="border-left-color: #00bcd4">
+                <h3>🛡️ Insurance Integration</h3>
+                <p>Seamless cashless treatment with major insurers — Star Health, HDFC Ergo, Bajaj Allianz, and
+                    government schemes like PM-JAY, CGHS, and ESIC.</p>
+            </div>
+            <div class="about-card" style="border-left-color: #4caf50">
+                <h3>💊 Medicine Management</h3>
+                <p>Complete prescription tracking, dosage reminders, multi-language instructions, and pharmacy price
+                    comparison. Never miss a dose again with our smart reminder system.</p>
+            </div>
+            <div class="about-card" style="border-left-color: #607d8b">
+                <h3>👩‍⚕️ Dr. Mira AI Assistant</h3>
+                <p>Meet Dr. Mira — your 24×7 AI Medical Assistant. She checks symptoms, books doctors, finds
+                    hospitals, handles emergencies, and answers all health questions. Voice chat enabled!</p>
+            </div>
+            <div class="about-card" style="border-left-color: #f44336">
+                <h3>🩸 Blood Bank Live</h3>
+                <p>Real-time blood unit tracking across major hospitals. Live stock updates every 5 seconds. Emergency
+                    blood request system with instant hospital notifications.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- DR. MIRA STORY -->
+    <section style="background: var(--bg)">
+        <div class="section-title">👩‍⚕️ Meet Dr. Mira — Your AI Health Assistant</div>
+        <div class="section-sub">How she became India's most loved AI doctor companion</div>
+        <div class="medibuddy-section">
+            <div class="medibuddy-card">
+                <div class="medibuddy-avatar" style="background:transparent;border:none">
+                    <img src="{{ url_for('static', filename='icons/dr-mira.png') }}" alt="Dr. Mira"
+                        style="width:120px;height:120px;border-radius:50%;object-fit:cover;border:3px solid #1a73e8;">
+                </div>
+                <div class="medibuddy-story">
+                    <h3>Dr. Mira — Your 24×7 AI Medical Assistant</h3>
+                    <p>Dr. Mira was created from a simple belief: every patient deserves immediate, caring medical
+                        guidance regardless of the time of day. Millions of Indians face health anxieties at 2 AM with
+                        no one to turn to — Dr. Mira is always there.</p>
+                    <p style="margin-top:12px">Built by a team of doctors, AI engineers, and patient advocates, Dr. Mira
+                        can check your symptoms, book doctors, find hospitals, manage emergencies, and respond via text
+                        or voice — just like a real doctor assistant.</p>
+                    <p style="margin-top:12px">Today, Dr. Mira helps 50,000+ patients across 8 cities, answering
+                        millions of health queries and connecting them with Medi-Connect's trusted network. And she
+                        never sleeps! 💙</p>
+                </div>
+            </div>
+
+            <div class="about-timeline">
+                <div class="about-timeline-item">
+                    <div class="about-timeline-year">🗓️ 2020</div>
+                    <div class="about-timeline-content">
+                        <h4>The Idea is Born</h4>
+                        <p>During the COVID-19 pandemic, our founders witnessed the chaos of emergency healthcare
+                            access. The idea of a unified digital health platform took shape.</p>
+                    </div>
+                </div>
+                <div class="about-timeline-item">
+                    <div class="about-timeline-year">🗓️ 2021</div>
+                    <div class="about-timeline-content">
+                        <h4>First Prototype</h4>
+                        <p>Built the first version with doctor listings, appointment booking, and emergency ambulance
+                            tracking. Partnered with Apollo and Fortis hospitals.</p>
+                    </div>
+                </div>
+                <div class="about-timeline-item">
+                    <div class="about-timeline-year">🗓️ 2022</div>
+                    <div class="about-timeline-content">
+                        <h4>Blood Bank & Insurance</h4>
+                        <p>Added live blood bank tracking, insurance integration with 5 major providers, and expanded to
+                            5 cities with 15+ partner hospitals.</p>
+                    </div>
+                </div>
+                <div class="about-timeline-item">
+                    <div class="about-timeline-year">🗓️ 2023</div>
+                    <div class="about-timeline-content">
+                        <h4>MediBuddy AI & Medicine Management</h4>
+                        <p>Launched the AI-powered chatbot, medicine management system with multi-language support, and
+                            pharmacy price comparison tool.</p>
+                    </div>
+                </div>
+                <div class="about-timeline-item">
+                    <div class="about-timeline-year">🗓️ 2024</div>
+                    <div class="about-timeline-content">
+                        <h4>50,000+ Patients & Growing</h4>
+                        <p>Reached 50,000 patients served across 8 cities, 20+ doctors, and 10 hospitals. Launched
+                            self-care features, lab report uploads, and dark mode.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo" style="margin-bottom:12px">
+                    <div class="logo-icon"><svg viewBox="0 0 24 24">
+                            <rect x="10" y="7" width="4" height="10" rx="1" />
+                            <rect x="7" y="10" width="10" height="4" rx="1" />
+                        </svg></div>
+                    <span class="logo-text" style="-webkit-text-fill-color:white">Medi-Connect</span>
+                </div>
+                <p>India's most trusted digital healthcare platform connecting patients, doctors, hospitals, and
+                    emergency services seamlessly.</p>
+            </div>
+            <div class="footer-col">
+                <h5>Services</h5><a href="appointment.html">Book Appointment</a><a href="home.html">Emergency
+                    Ambulance</a><a href="home.html">Blood Bank</a><a href="selfcare.html">Lab Reports</a>
+            </div>
+            <div class="footer-col">
+                <h5>Hospitals</h5><a href="categories.html">Apollo Hospitals</a><a href="categories.html">Fortis
+                    Healthcare</a><a href="categories.html">Narayana Health</a><a href="categories.html">Max
+                    Healthcare</a>
+            </div>
+            <div class="footer-col">
+                <h5>Support</h5><a href="help.html">Help Center</a><a href="help.html">Contact Us</a><a href="#">Privacy
+                    Policy</a><a href="#">Terms of Service</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Medi-Connect. All rights reserved. | Made with ❤️ in India</p>
+            <p>🏥 Registered under Ministry of Health & Family Welfare, Govt. of India</p>
+        </div>
+    </footer>
+
+    <!-- LOGIN MODAL -->
+    <div class="modal-overlay" id="loginModal" style="display:none"
+        onclick="if(event.target===this)this.style.display='none'">
+        <div class="modal-box login-modal">
+            <h2>Welcome to Medi-Connect</h2>
+            <div class="tabs"><button class="tab-btn2 active" id="loginTabBtn"
+                    onclick="switchAuthTab('login')">Login</button><button class="tab-btn2" id="signupTabBtn"
+                    onclick="switchAuthTab('signup')">Sign Up</button></div>
+            <div id="loginForm">
+                <div class="login-form"><input type="email" placeholder="Email address" id="loginEmail"><input
+                        type="password" placeholder="Password" id="loginPassword">
+                    <p class="forgot">Forgot Password?</p><button class="btn btn-primary"
+                        style="width:100%;padding:12px" onclick="doLogin()">Login</button>
+                </div>
+            </div>
+            <div id="signupForm" style="display:none">
+                <div class="login-form"><input type="text" placeholder="Full Name" id="signupName"><input type="tel"
+                        placeholder="Mobile Number" id="signupMobile"><input type="password" placeholder="Password"
+                        id="signupPassword"><input type="password" placeholder="Confirm Password"
+                        id="signupConfirm"><button class="btn btn-secondary" style="width:100%;padding:12px"
+                        onclick="doSignup()">Create Account</button></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="notif" id="notif"></div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>

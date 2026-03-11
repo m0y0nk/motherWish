@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Medicines | Medi-Connect</title>
+    <meta name="description"
+        content="Manage your medicines, set smart reminders, and track your daily adherence with the Medi-Connect Medicine Dashboard.">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <meta name="theme-color" content="#2472d8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Medi-Connect">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='icons/icon-192.svg') }}">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="home.html" class="logo">
+            <div class="logo-icon"><svg viewBox="0 0 24 24">
+                    <rect x="10" y="7" width="4" height="10" rx="1" />
+                    <rect x="7" y="10" width="10" height="4" rx="1" />
+                </svg></div>
+            <span class="logo-text">Medi-Connect</span>
+        </a>
+        <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+        <div class="nav-links" id="navLinks">
+            <a href="home.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="insurance.html">Insurance</a>
+            <a href="categories.html">Categories</a>
+            <a href="selfcare.html">Self Care</a>
+            <a href="appointment.html">Book Appointment</a>
+            <a href="medicines.html" class="active">My Medicines</a>
+            <a href="help.html">Help</a>
+        </div>
+        <div class="nav-right">
+            <div class="search-bar">
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zM9.5 14A4.5 4.5 0 1114 9.5 4.494 4.494 0 019.5 14z" />
+                </svg>
+                <input type="text" placeholder="Search doctors & hospitals...">
+            </div>
+            <button class="btn btn-primary" id="authBtn"
+                onclick="document.getElementById('loginModal').style.display='flex'">Login / Sign Up</button>
+            <a href="settings.html" class="settings-icon" title="Settings">⚙️</a>
+        </div>
+    </nav>
+
+    <!-- DASHBOARD HEADER -->
+    <header class="dashboard-head">
+        <div class="dash-inner">
+            <div>
+                <h1 style="font-size:2.2rem;font-weight:900;margin-bottom:8px">My Medicines 💊</h1>
+                <p>Manage prescriptions, get smart reminders, and track your daily health adherence.</p>
+            </div>
+            <div style="display:flex;gap:12px;align-items:center">
+                <div class="adherence-circle">
+                    <svg viewBox="0 0 36 36">
+                        <path class="circle-bg"
+                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        <path class="circle-fg" stroke-dasharray="85, 100"
+                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    </svg>
+                    <div class="circle-text">85%</div>
+                </div>
+                <div style="font-size:0.85rem;opacity:0.9">Weekly<br>Adherence</div>
+            </div>
+            <button class="btn btn-primary" style="background:white;color:var(--primary)" onclick="showAddMedModal()">➕
+                Add Medicine</button>
+        </div>
+    </header>
+
+    <!-- DASHBOARD CONTENT -->
+    <section style="padding: 40px 32px">
+        <div class="med-layout">
+
+            <!-- LEFT COLUMN: MEDICINE LIST -->
+            <div class="med-list-col">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+                    <h2 style="font-size:1.4rem;font-weight:800">Your Prescriptions</h2>
+                    <div class="tabs" style="margin-bottom:0">
+                        <button class="tab-btn2 active" onclick="filterMeds('active', this)">Active</button>
+                        <button class="tab-btn2" onclick="filterMeds('completed', this)">Completed</button>
+                    </div>
+                </div>
+
+                <div id="medListContainer" style="display:flex;flex-direction:column;gap:16px">
+                    <!-- Cards will be injected by main.js -->
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN: DETAILED INFO PANEL -->
+            <div class="med-detail-col">
+                <div class="med-detail-card" id="medDetailPanel">
+                    <div class="empty-state">
+                        <div style="font-size:3rem;margin-bottom:16px">👈</div>
+                        <h3>Select a medicine</h3>
+                        <p>Click on any medicine from the list to view its complete prescription details, schedule, and
+                            safety information.</p>
+                    </div>
+
+                    <!-- Detail View (Hidden initially) -->
+                    <div class="detail-view" id="detailView" style="display:none">
+                        <div class="detail-header">
+                            <div>
+                                <div class="med-badge red" id="detBadge" style="display:none">URGENT</div>
+                                <h2 id="detName">Medicine Name</h2>
+                                <div class="det-salt" id="detSalt">Salt composition</div>
+                            </div>
+                            <div class="med-actions">
+                                <button class="btn btn-secondary" onclick="markMed('taken')" title="Mark as Taken">✅
+                                    Taken</button>
+                                <button class="btn btn-outline"
+                                    style="color:var(--text-light);border-color:var(--border)"
+                                    onclick="markMed('skipped')" title="Mark as Skipped">❌ Skipped</button>
+                            </div>
+                        </div>
+
+                        <div class="info-grid mt-4">
+                            <div class="info-box">
+                                <div class="info-icon">🎯</div>
+                                <div class="info-val" id="detUses">Condition</div>
+                                <div class="info-lbl">Prescribed For</div>
+                            </div>
+                            <div class="info-box">
+                                <div class="info-icon">💊</div>
+                                <div class="info-val" id="detDosage">Dosage</div>
+                                <div class="info-lbl">Amount</div>
+                            </div>
+                            <div class="info-box">
+                                <div class="info-icon">🍽️</div>
+                                <div class="info-val" id="detFood">Instruction</div>
+                                <div class="info-lbl">How to Take</div>
+                            </div>
+                            <div class="info-box">
+                                <div class="info-icon">📅</div>
+                                <div class="info-val" id="detDuration">Dates</div>
+                                <div class="info-lbl">Course Duration</div>
+                            </div>
+                        </div>
+
+                        <h3 class="mt-4">⏰ Time Schedule</h3>
+                        <div class="schedule-grid" id="detSchedule">
+                            <!-- Schedule badges generated here -->
+                        </div>
+
+                        <div class="smart-reminders mt-4">
+                            <div
+                                style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+                                <h3>🔔 Smart Reminders</h3>
+                                <button class="btn btn-outline" style="padding:4px 12px;font-size:0.75rem"
+                                    onclick="showNotif('Snoozed for 15 minutes 💤')">Snooze (15m)</button>
+                            </div>
+                            <div class="rem-switches">
+                                <div class="settings-item"><label style="font-size:0.85rem;font-weight:600">App Push
+                                        Notification</label>
+                                    <div class="toggle"></div>
+                                </div>
+                                <div class="settings-item"><label style="font-size:0.85rem;font-weight:600">SMS
+                                        Alert</label>
+                                    <div class="toggle"></div>
+                                </div>
+                                <div class="settings-item"><label style="font-size:0.85rem;font-weight:600">Alarm
+                                        Sound</label>
+                                    <div class="toggle off"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="safety-grid mt-4">
+                            <div class="safety-card warn">
+                                <h4>⚠️ Side Effects</h4>
+                                <p id="detSide">Possible side effects listed here.</p>
+                            </div>
+                            <div class="safety-card safe">
+                                <h4>❄️ Storage</h4>
+                                <p id="detStorage">Storage instructions here.</p>
+                            </div>
+                        </div>
+
+                        <div class="doctor-link mt-4" id="detDoctor">
+                            <!-- Doctor info injected here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ANALYTICS SECTION -->
+                <div class="analytics-card mt-4">
+                    <h3>📈 Quick Analytics</h3>
+                    <div style="display:flex;gap:16px;margin-top:16px">
+                        <div class="stat-box">
+                            <div class="stat-val text-green">14</div>
+                            <div class="stat-lbl">Doses Taken</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-val text-red">2</div>
+                            <div class="stat-lbl">Missed Doses</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-val text-blue">92%</div>
+                            <div class="stat-lbl">Health Score</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo" style="margin-bottom:12px">
+                    <div class="logo-icon"><svg viewBox="0 0 24 24">
+                            <rect x="10" y="7" width="4" height="10" rx="1" />
+                            <rect x="7" y="10" width="10" height="4" rx="1" />
+                        </svg></div>
+                    <span class="logo-text" style="-webkit-text-fill-color:white">Medi-Connect</span>
+                </div>
+                <p>India's most trusted digital healthcare platform.</p>
+            </div>
+            <div class="footer-col">
+                <h5>Services</h5><a href="appointment.html">Book Appointment</a><a href="medicines.html">My
+                    Medicines</a><a href="home.html">Emergency</a>
+            </div>
+            <div class="footer-col">
+                <h5>Hospitals</h5><a href="categories.html">Apollo</a><a href="categories.html">Fortis</a><a
+                    href="categories.html">AIIMS</a>
+            </div>
+            <div class="footer-col">
+                <h5>Support</h5><a href="help.html">Help Center</a><a href="help.html">Contact Us</a><a href="#">Privacy
+                    Policy</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Medi-Connect. All rights reserved. | Made with ❤️ in India</p>
+        </div>
+    </footer>
+
+    <!-- ADD MEDICINE MODAL -->
+    <div class="modal-overlay" id="addMedModal" style="display:none"
+        onclick="if(event.target===this)this.style.display='none'">
+        <div class="modal-box login-modal" style="max-width:540px;text-align:left">
+            <h2 style="text-align:center">Add New Medicine</h2>
+            <div class="add-med-options mt-4" style="display:flex;gap:12px;margin-bottom:20px">
+                <button class="btn btn-outline" style="flex:1" onclick="showNotif('Scanning QR code... 📱')">📷 Scan
+                    QR</button>
+                <button class="btn btn-outline" style="flex:1" onclick="showNotif('Uploading prescription... 📄')">📄
+                    Upload PDF</button>
+            </div>
+            <div class="text-divider"
+                style="text-align:center;margin-bottom:20px;color:var(--text-light);font-size:0.85rem">or add manually
+            </div>
+
+            <div class="settings-form-group">
+                <label>Medicine Name</label>
+                <input type="text" id="addMedName" placeholder="e.g., Paracetamol 500mg">
+            </div>
+            <div style="display:flex;gap:16px">
+                <div class="settings-form-group" style="flex:1">
+                    <label>Duration (Days)</label>
+                    <input type="number" id="addMedDuration" placeholder="5">
+                </div>
+                <div class="settings-form-group" style="flex:1">
+                    <label>Dosage Instruction</label>
+                    <select id="addMedDosage" class="lang-sel" style="width:100%;padding:10px">
+                        <option>After Food</option>
+                        <option>Before Food</option>
+                        <option>Empty Stomach</option>
+                    </select>
+                </div>
+            </div>
+            <div class="settings-form-group mb-4">
+                <label>Times per day</label>
+                <div style="display:flex;gap:8px">
+                    <label style="font-weight:normal"><input type="checkbox" id="addMedMorn" value="Morning">
+                        Morning</label>
+                    <label style="font-weight:normal"><input type="checkbox" id="addMedAft" value="Afternoon">
+                        Afternoon</label>
+                    <label style="font-weight:normal"><input type="checkbox" id="addMedEve" value="Evening">
+                        Evening</label>
+                </div>
+            </div>
+            <button class="btn btn-primary" style="width:100%;padding:14px" onclick="saveNewMedicine()">Save
+                Medicine</button>
+        </div>
+    </div>
+
+    <!-- EMERGENCY FAB -->
+    <a href="tel:108" class="emergency-fab" title="Call 108 Emergency">🚑 ER</a>
+
+    <div class="notif" id="notif"></div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>

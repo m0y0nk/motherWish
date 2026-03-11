@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insurance Partners | Medi-Connect</title>
+    <meta name="description"
+        content="Explore insurance partners supported by Medi-Connect. Cashless treatment, claim process, and coverage comparison at 500+ hospitals.">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <meta name="theme-color" content="#2472d8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Medi-Connect">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='icons/icon-192.svg') }}">
+    <style>
+        .insurance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .ins-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 28px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            border-top: 4px solid var(--primary);
+        }
+
+        .ins-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .ins-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .ins-card p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .ins-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 16px;
+        }
+
+        .ins-features li {
+            font-size: 0.82rem;
+            padding: 6px 0;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .ins-features li:last-child {
+            border-bottom: none;
+        }
+
+        .ins-amt {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin-bottom: 12px;
+        }
+
+        .claim-section {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .claim-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .claim-step {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 24px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+        }
+
+        .claim-step:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .claim-num {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            font-weight: 800;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 14px;
+        }
+
+        .claim-step h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .claim-step p {
+            font-size: 0.82rem;
+            color: var(--text-light);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="home.html" class="logo">
+            <div class="logo-icon"><svg viewBox="0 0 24 24">
+                    <rect x="10" y="7" width="4" height="10" rx="1" />
+                    <rect x="7" y="10" width="10" height="4" rx="1" />
+                </svg></div>
+            <span class="logo-text">Medi-Connect</span>
+        </a>
+        <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+        <div class="nav-links" id="navLinks">
+            <a href="home.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="insurance.html">Insurance</a>
+            <a href="categories.html">Categories</a>
+            <a href="selfcare.html">Self Care</a>
+            <a href="appointment.html">Book Appointment</a>
+            <a href="medicines.html">My Medicines</a>`n            <a href="help.html">Help</a>
+        </div>
+        <div class="nav-right">
+            <div class="search-bar">
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zM9.5 14A4.5 4.5 0 1114 9.5 4.494 4.494 0 019.5 14z" />
+                </svg>
+                <input type="text" placeholder="Search doctors & hospitals...">
+            </div>
+            <button class="btn btn-primary" id="authBtn"
+                onclick="document.getElementById('loginModal').style.display='flex'">Login / Sign Up</button>
+            <a href="settings.html" class="settings-icon" title="Settings">⚙️</a>
+        </div>
+    </nav>
+
+    <!-- INSURANCE PARTNERS -->
+    <section>
+        <div class="section-title">🛡️ Insurance Partners</div>
+        <div class="section-sub">Cashless treatment at 500+ hospitals with major insurance providers</div>
+        <div class="insurance-grid">
+            <div class="ins-card">
+                <h3>🛡️ Star Health Insurance</h3>
+                <p>India's largest standalone health insurer with comprehensive coverage for individuals and families.
+                </p>
+                <div class="ins-amt">Coverage up to ₹1 Crore</div>
+                <ul class="ins-features">
+                    <li>✅ Cashless treatment at 14,000+ hospitals</li>
+                    <li>✅ No waiting period for accidents</li>
+                    <li>✅ Free annual health checkups</li>
+                    <li>✅ Daycare procedures covered</li>
+                    <li>✅ Maternity & newborn coverage</li>
+                </ul>
+                <button class="btn btn-primary" onclick="showNotif('📞 Star Health: 1800-425-2255')">📞 Contact Star
+                    Health</button>
+            </div>
+            <div class="ins-card" style="border-top-color: #ff6b35">
+                <h3>🔶 HDFC Ergo</h3>
+                <p>One of India's largest private general insurance companies with fast claim settlement.</p>
+                <div class="ins-amt">Coverage up to ₹2 Crore</div>
+                <ul class="ins-features">
+                    <li>✅ 98% claim settlement ratio</li>
+                    <li>✅ 13,000+ network hospitals</li>
+                    <li>✅ Restore benefit — 100% sum insured reset</li>
+                    <li>✅ OPD cover available</li>
+                    <li>✅ No co-payment for network hospitals</li>
+                </ul>
+                <button class="btn btn-primary" onclick="showNotif('📞 HDFC Ergo: 1800-2700-700')">📞 Contact HDFC
+                    Ergo</button>
+            </div>
+            <div class="ins-card" style="border-top-color: #e91e63">
+                <h3>🅱️ Bajaj Allianz</h3>
+                <p>A joint venture between Bajaj Finserv and Allianz SE, offering affordable health plans.</p>
+                <div class="ins-amt">Coverage up to ₹50 Lakhs</div>
+                <ul class="ins-features">
+                    <li>✅ Cashless at 6,500+ hospitals</li>
+                    <li>✅ Ambulance charges covered</li>
+                    <li>✅ Pre & post hospitalization</li>
+                    <li>✅ Automatic sum insured recharge</li>
+                    <li>✅ Tax benefit under Section 80D</li>
+                </ul>
+                <button class="btn btn-primary" onclick="showNotif('📞 Bajaj Allianz: 1800-209-5858')">📞 Contact Bajaj
+                    Allianz</button>
+            </div>
+            <div class="ins-card" style="border-top-color: #00a651">
+                <h3>🏛️ New India Assurance</h3>
+                <p>India's largest general insurance company, a Government of India undertaking.</p>
+                <div class="ins-amt">Coverage up to ₹25 Lakhs</div>
+                <ul class="ins-features">
+                    <li>✅ Government-backed reliability</li>
+                    <li>✅ 10,000+ empanelled hospitals</li>
+                    <li>✅ Senior citizen plans available</li>
+                    <li>✅ Group mediclaim policies</li>
+                    <li>✅ Critical illness coverage</li>
+                </ul>
+                <button class="btn btn-primary" onclick="showNotif('📞 New India: 1800-209-1415')">📞 Contact New
+                    India</button>
+            </div>
+            <div class="ins-card" style="border-top-color: #9c27b0">
+                <h3>🇮🇳 United India Insurance</h3>
+                <p>A leading public sector general insurance company with affordable plans for all.</p>
+                <div class="ins-amt">Coverage up to ₹30 Lakhs</div>
+                <ul class="ins-features">
+                    <li>✅ Affordable premiums</li>
+                    <li>✅ Wide hospital network</li>
+                    <li>✅ Family floater plans</li>
+                    <li>✅ Personal accident cover</li>
+                    <li>✅ Domiciliary treatment covered</li>
+                </ul>
+                <button class="btn btn-primary" onclick="showNotif('📞 United India: 1800-425-3333')">📞 Contact United
+                    India</button>
+            </div>
+            <div class="ins-card" style="border-top-color: #ff9800">
+                <h3>🏥 PM-JAY (Ayushman Bharat)</h3>
+                <p>Government scheme providing ₹5 Lakh health coverage per family per year to 50 crore beneficiaries.
+                </p>
+                <div class="ins-amt">Coverage: ₹5 Lakhs/year</div>
+                <ul class="ins-features">
+                    <li>✅ Completely free for eligible families</li>
+                    <li>✅ 24,000+ empanelled hospitals</li>
+                    <li>✅ 1,929 treatment packages</li>
+                    <li>✅ No cap on family size</li>
+                    <li>✅ Pre-existing diseases covered</li>
+                </ul>
+                <button class="btn btn-secondary" onclick="showNotif('📞 PM-JAY Helpline: 14555')">📞 PM-JAY Helpline:
+                    14555</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLAIM PROCESS -->
+    <section style="background: var(--bg)">
+        <div class="section-title">📋 How to Claim</div>
+        <div class="section-sub">Simple 4-step process for cashless claims via Medi-Connect</div>
+        <div class="claim-section">
+            <div class="claim-steps">
+                <div class="claim-step">
+                    <div class="claim-num">1</div>
+                    <h4>Select Hospital</h4>
+                    <p>Choose from 500+ network hospitals in your city on Medi-Connect.</p>
+                </div>
+                <div class="claim-step">
+                    <div class="claim-num">2</div>
+                    <h4>Show Insurance Card</h4>
+                    <p>Present your health card or policy number at the hospital desk.</p>
+                </div>
+                <div class="claim-step">
+                    <div class="claim-num">3</div>
+                    <h4>Pre-Authorization</h4>
+                    <p>Hospital sends pre-auth to your insurer. Approval typically within 2 hours.</p>
+                </div>
+                <div class="claim-step">
+                    <div class="claim-num">4</div>
+                    <h4>Cashless Treatment</h4>
+                    <p>Get treated without paying upfront. Insurance settles directly with the hospital.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo" style="margin-bottom:12px">
+                    <div class="logo-icon"><svg viewBox="0 0 24 24">
+                            <rect x="10" y="7" width="4" height="10" rx="1" />
+                            <rect x="7" y="10" width="10" height="4" rx="1" />
+                        </svg></div>
+                    <span class="logo-text" style="-webkit-text-fill-color:white">Medi-Connect</span>
+                </div>
+                <p>India's most trusted digital healthcare platform.</p>
+            </div>
+            <div class="footer-col">
+                <h5>Services</h5><a href="appointment.html">Book Appointment</a><a href="home.html">Emergency</a><a
+                    href="home.html">Blood Bank</a>
+            </div>
+            <div class="footer-col">
+                <h5>Hospitals</h5><a href="categories.html">Apollo</a><a href="categories.html">Fortis</a><a
+                    href="categories.html">AIIMS</a>
+            </div>
+            <div class="footer-col">
+                <h5>Support</h5><a href="help.html">Help Center</a><a href="help.html">Contact Us</a><a href="#">Privacy
+                    Policy</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Medi-Connect. All rights reserved. | Made with ❤️ in India</p>
+        </div>
+    </footer>
+
+    <!-- LOGIN MODAL -->
+    <div class="modal-overlay" id="loginModal" style="display:none"
+        onclick="if(event.target===this)this.style.display='none'">
+        <div class="modal-box login-modal">
+            <h2>Welcome to Medi-Connect</h2>
+            <div class="tabs"><button class="tab-btn2 active" id="loginTabBtn"
+                    onclick="switchAuthTab('login')">Login</button><button class="tab-btn2" id="signupTabBtn"
+                    onclick="switchAuthTab('signup')">Sign Up</button></div>
+            <div id="loginForm">
+                <div class="login-form"><input type="email" placeholder="Email address" id="loginEmail"><input
+                        type="password" placeholder="Password" id="loginPassword"><button class="btn btn-primary"
+                        style="width:100%;padding:12px" onclick="doLogin()">Login</button></div>
+            </div>
+            <div id="signupForm" style="display:none">
+                <div class="login-form"><input type="text" placeholder="Full Name" id="signupName"><input type="tel"
+                        placeholder="Mobile Number" id="signupMobile"><input type="password" placeholder="Password"
+                        id="signupPassword"><input type="password" placeholder="Confirm Password"
+                        id="signupConfirm"><button class="btn btn-secondary" style="width:100%;padding:12px"
+                        onclick="doSignup()">Create Account</button></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="notif" id="notif"></div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>

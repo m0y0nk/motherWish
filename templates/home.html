@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medi-Connect | India's Trusted Healthcare Platform</title>
+    <meta name="description"
+        content="Medi-Connect - Book appointments, find doctors, access emergency services, blood banks, and more. India's most trusted digital healthcare platform.">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <meta name="theme-color" content="#2472d8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Medi-Connect">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='icons/icon-192.svg') }}">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="home.html" class="logo">
+            <div class="logo-icon"><svg viewBox="0 0 24 24">
+                    <rect x="10" y="7" width="4" height="10" rx="1" />
+                    <rect x="7" y="10" width="10" height="4" rx="1" />
+                </svg></div>
+            <span class="logo-text">Medi-Connect</span>
+        </a>
+        <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+        <div class="nav-links" id="navLinks">
+            <a href="home.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="insurance.html">Insurance</a>
+            <a href="categories.html">Categories</a>
+            <a href="selfcare.html">Self Care</a>
+            <a href="appointment.html">Book Appointment</a>
+            <a href="medicines.html">My Medicines</a>`n <a href="help.html">Help</a>
+        </div>
+        <div class="nav-right">
+            <div class="search-bar">
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zM9.5 14A4.5 4.5 0 1114 9.5 4.494 4.494 0 019.5 14z" />
+                </svg>
+                <input type="text" placeholder="Search doctors & hospitals...">
+            </div>
+            <button class="btn btn-primary" id="authBtn"
+                onclick="document.getElementById('loginModal').style.display='flex'">Login / Sign Up</button>
+            <button class="btn btn-secondary" id="installAppBtn" style="display: none;">⬇️ Install App</button>
+            <a href="settings.html" class="settings-icon" title="Settings">⚙️</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-text" style="text-align: center; margin: 0 auto; max-width: 800px;">
+                <h1 style="font-size: 3.5rem; margin-bottom: 20px;">Your Health, Our Priority</h1>
+                <p style="font-size: 1.25rem; opacity: 0.95; margin-bottom: 35px;">India's most trusted digital
+                    healthcare platform. Book appointments, find doctors, access emergency services, and live blood bank
+                    tracking — all in one accessible place.</p>
+                <div class="hero-btns" style="justify-content: center; margin-bottom: 40px;">
+                    <a href="appointment.html" class="btn-hero btn-hero-white">📅 Book Appointment</a>
+                    <a href="categories.html" class="btn-hero btn-hero-outline">👨‍⚕️ Find Doctors</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-num" id="countHosp">0</div>
+                        <div class="stat-lbl">Hospitals</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num" id="countDoc">0</div>
+                        <div class="stat-lbl">Doctors</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num" id="countPat">0</div>
+                        <div class="stat-lbl">Patients Served</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num" id="countCity">0</div>
+                        <div class="stat-lbl">Cities</div>
+                    </div>
+                </div>
+            </div>
+            <div class="mira-hero-card" style="margin: 0 auto; position: relative;">
+                <img src="{{ url_for('static', filename='icons/dr-mira.png') }}" alt="Medical Illustration"
+                    class="mira-hero-img" style="border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOOD BANK & EMERGENCY -->
+    <section>
+        <div class="section-title">🩸 Emergency & Blood Services</div>
+        <div class="section-sub">Real-time blood availability & emergency ambulance tracking</div>
+        <div class="home-grid" style="max-width:1100px;margin:0 auto">
+            <!-- Blood Bank -->
+            <div class="blood-bank"
+                style="background: white; border-radius: 16px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.06);">
+                <h3 style="color: #1a202c; font-size: 1.4rem; margin-bottom: 8px;">🩸 Blood Bank Availability <span
+                        class="pulse-dot" style="margin-left:8px; vertical-align: middle;"></span></h3>
+                <p class="sub" style="color: #4a5568; margin-bottom: 24px;">Live blood unit status · Updated every 5
+                    seconds</p>
+                <div class="blood-grid" id="bloodGrid"
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(70px, 1fr)); gap: 12px;">
+                    <!-- Sample Data - Replaced gracefully by JS ideally, but let's hardcode the requested visual indicators for testing -->
+                    <div class="blood-card blood-available"
+                        style="padding: 15px 5px; background: #e8f5e9; border: 1px solid #4caf50; border-radius: 12px; text-align: center;">
+                        <div class="blood-type" style="font-weight: 800; font-size: 1.4rem; color: #2e7d32;">A+</div>
+                        <div class="blood-status"
+                            style="font-size: 0.65rem; color: #2e7d32; font-weight: 600; margin-top: 4px;">✅ Available
+                        </div>
+                    </div>
+                    <div class="blood-card blood-available"
+                        style="padding: 15px 5px; background: #e8f5e9; border: 1px solid #4caf50; border-radius: 12px; text-align: center;">
+                        <div class="blood-type" style="font-weight: 800; font-size: 1.4rem; color: #2e7d32;">B+</div>
+                        <div class="blood-status"
+                            style="font-size: 0.65rem; color: #2e7d32; font-weight: 600; margin-top: 4px;">✅ Available
+                        </div>
+                    </div>
+                    <div class="blood-card blood-low"
+                        style="padding: 15px 5px; background: #fff8e1; border: 1px solid #ffc107; border-radius: 12px; text-align: center;">
+                        <div class="blood-type" style="font-weight: 800; font-size: 1.4rem; color: #e65100;">O+</div>
+                        <div class="blood-status"
+                            style="font-size: 0.65rem; color: #e65100; font-weight: 600; margin-top: 4px;">⚠️ Low Stock
+                        </div>
+                    </div>
+                    <div class="blood-card blood-critical"
+                        style="padding: 15px 5px; background: #ffebee; border: 1px solid #f44336; border-radius: 12px; text-align: center;">
+                        <div class="blood-type" style="font-weight: 800; font-size: 1.4rem; color: #b71c1c;">AB-</div>
+                        <div class="blood-status"
+                            style="font-size: 0.65rem; color: #b71c1c; font-weight: 600; margin-top: 4px;">🔴 Critical
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top:24px; text-align:center;">
+                    <button class="btn btn-primary"
+                        style="padding: 14px 28px; font-size: 1.05rem; width: 100%; max-width: 300px; background: #ff4444; border: none; font-weight: bold; border-radius: 30px;"
+                        onclick="showNotif('📞 Redirecting to Request Form...')">🩸 Request Blood Form</button>
+                </div>
+            </div>
+            <!-- Emergency -->
+            <div class="emergency-panel">
+                <h3>🚑 Emergency Services</h3>
+                <a href="tel:108" class="btn-108">📞 CALL 108 — FREE AMBULANCE</a>
+                <h4 style="font-size:0.9rem;font-weight:700;margin-bottom:12px">🚑 Nearby Ambulances</h4>
+                <ul class="ambulance-list" id="ambulanceList"></ul>
+                <div class="map-sim">
+                    <div class="map-grid"></div>
+                    <div class="map-label">📍 Live Ambulance Tracker</div>
+                    <div class="amb-dot amb1" style="left:15%;top:25%"></div>
+                    <div class="amb-dot green amb2" style="left:65%;top:55%"></div>
+                    <div class="amb-dot amb3" style="left:40%;top:40%"></div>
+                    <div class="hosp-dot hosp1"></div>
+                    <div class="hosp-dot hosp2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo" style="margin-bottom:12px">
+                    <div class="logo-icon"><svg viewBox="0 0 24 24">
+                            <rect x="10" y="7" width="4" height="10" rx="1" />
+                            <rect x="7" y="10" width="10" height="4" rx="1" />
+                        </svg></div>
+                    <span class="logo-text" style="-webkit-text-fill-color:white">Medi-Connect</span>
+                </div>
+                <p>India's most trusted digital healthcare platform connecting patients, doctors, hospitals, and
+                    emergency services seamlessly.</p>
+                <div class="social-links" style="margin-top:16px"><span class="social-btn">📘</span><span
+                        class="social-btn">🐦</span><span class="social-btn">📷</span><span class="social-btn">▶️</span>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h5>Services</h5><a href="appointment.html">Book Appointment</a><a href="home.html">Emergency
+                    Ambulance</a><a href="home.html">Blood Bank</a><a href="selfcare.html">Lab Reports</a><a
+                    href="categories.html">Find Doctors</a>
+            </div>
+            <div class="footer-col">
+                <h5>Hospitals</h5><a href="categories.html">Apollo Hospitals</a><a href="categories.html">Fortis
+                    Healthcare</a><a href="categories.html">Narayana Health</a><a href="categories.html">Manipal
+                    Hospitals</a><a href="categories.html">Max Healthcare</a>
+            </div>
+            <div class="footer-col">
+                <h5>Support</h5><a href="help.html">Help Center</a><a href="help.html">Contact Us</a><a href="#">Privacy
+                    Policy</a><a href="#">Terms of Service</a><a href="#">Careers</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Medi-Connect. All rights reserved. | Made with ❤️ in India</p>
+            <p>🏥 Registered under Ministry of Health & Family Welfare, Govt. of India</p>
+        </div>
+    </footer>
+
+    <!-- DR. MIRA CHATBOT -->
+    <button class="chatbot-btn" onclick="toggleChat()" title="Chat with Dr. Mira" id="miraChatBtn">
+        <img src="{{ url_for('static', filename='icons/dr-mira.png') }}" alt="Dr. Mira">
+    </button>
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header">
+            <div class="chat-header-image-wrap">
+                <img src="{{ url_for('static', filename='icons/dr-mira.png') }}" alt="Dr. Mira" class="chat-avatar">
+                <span class="chat-avatar-online"></span>
+            </div>
+            <div class="chat-header-info">
+                <div class="chat-title">Dr. Mira</div>
+                <div class="chat-subtitle">🟢 Online · 24×7 AI Medical Assistant</div>
+            </div>
+            <button class="chat-close" onclick="toggleChat()">✕</button>
+        </div>
+        <div class="mira-intro-banner">
+            Hello! I'm Dr. Mira – Your 24×7 AI Medical Assistant. 💙
+        </div>
+        <div class="chat-messages" id="chatMessages">
+        </div>
+        <div class="chat-quick">
+            <button class="quick-btn" onclick="quickChat('Check Symptoms')">🩺 Check Symptoms</button>
+            <button class="quick-btn" onclick="quickChat('Book Doctor')">📅 Book Doctor</button>
+            <button class="quick-btn" onclick="quickChat('Find Hospital')">🏥 Find Hospital</button>
+            <button class="quick-btn" onclick="quickChat('Order Medicine')">💊 Medicine</button>
+            <button class="quick-btn" onclick="quickChat('Emergency')">🚨 Emergency</button>
+        </div>
+        <div class="chat-input">
+            <button class="voice-btn" id="voiceBtn" onclick="startVoiceInput()"
+                title="Voice chat with Dr. Mira">🎤</button>
+            <input type="text" placeholder="Ask Dr. Mira anything..." id="chatIn"
+                onkeypress="if(event.key==='Enter')sendChat()">
+            <button class="chat-send" onclick="sendChat()">Send</button>
+        </div>
+    </div>
+
+    <!-- LOGIN MODAL -->
+    <div class="modal-overlay" id="loginModal" style="display:none"
+        onclick="if(event.target===this)this.style.display='none'">
+        <div class="modal-box login-modal">
+            <h2>Welcome to Medi-Connect</h2>
+            <div class="tabs">
+                <button class="tab-btn2 active" id="loginTabBtn" onclick="switchAuthTab('login')">Login</button>
+                <button class="tab-btn2" id="signupTabBtn" onclick="switchAuthTab('signup')">Sign Up</button>
+            </div>
+            <div id="loginForm">
+                <div class="login-form">
+                    <input type="email" placeholder="Email address" id="loginEmail">
+                    <input type="password" placeholder="Password" id="loginPassword">
+                    <p class="forgot">Forgot Password?</p>
+                    <button class="btn btn-primary" style="width:100%;padding:12px" onclick="doLogin()">Login</button>
+                </div>
+            </div>
+            <div id="signupForm" style="display:none">
+                <div class="login-form">
+                    <input type="text" placeholder="Full Name" id="signupName">
+                    <input type="tel" placeholder="Mobile Number" id="signupMobile">
+                    <input type="password" placeholder="Password" id="signupPassword">
+                    <input type="password" placeholder="Confirm Password" id="signupConfirm">
+                    <button class="btn btn-secondary" style="width:100%;padding:12px" onclick="doSignup()">Create
+                        Account</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NOTIFICATION -->
+    <div class="notif" id="notif"></div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>

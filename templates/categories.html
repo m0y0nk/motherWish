@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Doctors & Hospitals | Medi-Connect</title>
+    <meta name="description"
+        content="Browse 20+ verified doctors and 10 top hospitals. Filter by specialization, fees, and ratings. Book appointments instantly on Medi-Connect.">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <meta name="theme-color" content="#2472d8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Medi-Connect">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='icons/icon-192.svg') }}">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="home.html" class="logo">
+            <div class="logo-icon"><svg viewBox="0 0 24 24">
+                    <rect x="10" y="7" width="4" height="10" rx="1" />
+                    <rect x="7" y="10" width="10" height="4" rx="1" />
+                </svg></div>
+            <span class="logo-text">Medi-Connect</span>
+        </a>
+        <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+        <div class="nav-links" id="navLinks">
+            <a href="home.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="insurance.html">Insurance</a>
+            <a href="categories.html">Categories</a>
+            <a href="selfcare.html">Self Care</a>
+            <a href="appointment.html">Book Appointment</a>
+            <a href="medicines.html">My Medicines</a>`n <a href="help.html">Help</a>
+        </div>
+        <div class="nav-right">
+            <div class="search-bar">
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zM9.5 14A4.5 4.5 0 1114 9.5 4.494 4.494 0 019.5 14z" />
+                </svg>
+                <input type="text" placeholder="Search doctors & hospitals...">
+            </div>
+            <button class="btn btn-primary" id="authBtn"
+                onclick="document.getElementById('loginModal').style.display='flex'">Login / Sign Up</button>
+            <a href="settings.html" class="settings-icon" title="Settings">⚙️</a>
+        </div>
+    </nav>
+
+    <!-- DOCTORS -->
+    <section>
+        <div class="section-title">👨‍⚕️ Our Doctors</div>
+        <div class="section-sub">20+ Verified Specialists · Across 15+ Departments</div>
+        <div class="filter-bar" style="max-width:1200px;margin:0 auto 28px">
+            <span class="filter-label">🔍 Filter:</span>
+            <select id="specFilter" onchange="filterDoctors()">
+                <option value="">All Specializations</option>
+                <option>Cardiology</option>
+                <option>Neurology</option>
+                <option>Orthopedics</option>
+                <option>Gynecology</option>
+                <option>Pediatrics</option>
+                <option>ENT</option>
+                <option>Pulmonology</option>
+                <option>Oncology</option>
+                <option>Urology</option>
+                <option>Gastroenterology</option>
+                <option>Dental</option>
+                <option>Radiology</option>
+                <option>Ophthalmology</option>
+                <option>Nephrology</option>
+                <option>Neurosurgery</option>
+                <option>IVF & Fertility</option>
+                <option>Ayurveda</option>
+                <option>General Medicine</option>
+                <option>General Surgery</option>
+                <option>Dermatology</option>
+            </select>
+            <select id="feesFilter" onchange="filterDoctors()">
+                <option value="">Any Budget</option>
+                <option value="500">Under ₹500</option>
+                <option value="1000">Under ₹1,000</option>
+                <option value="1500">Under ₹1,500</option>
+                <option value="2000">Under ₹2,000</option>
+            </select>
+            <button class="btn btn-outline" onclick="resetFilters()">Reset</button>
+        </div>
+        <div class="doctors-grid" id="doctorsGrid"></div>
+    </section>
+
+    <!-- HOSPITALS -->
+    <section style="background: var(--bg)">
+        <div class="section-title">🏥 Partner Hospitals</div>
+        <div class="section-sub">10 Top Hospitals · Real-Time Bed Availability</div>
+        <div class="hospitals-grid" id="hospitalsGrid"></div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo" style="margin-bottom:12px">
+                    <div class="logo-icon"><svg viewBox="0 0 24 24">
+                            <rect x="10" y="7" width="4" height="10" rx="1" />
+                            <rect x="7" y="10" width="10" height="4" rx="1" />
+                        </svg></div>
+                    <span class="logo-text" style="-webkit-text-fill-color:white">Medi-Connect</span>
+                </div>
+                <p>India's most trusted digital healthcare platform.</p>
+            </div>
+            <div class="footer-col">
+                <h5>Services</h5><a href="appointment.html">Book Appointment</a><a href="home.html">Emergency</a><a
+                    href="home.html">Blood Bank</a>
+            </div>
+            <div class="footer-col">
+                <h5>Hospitals</h5><a href="categories.html">Apollo</a><a href="categories.html">Fortis</a><a
+                    href="categories.html">AIIMS</a>
+            </div>
+            <div class="footer-col">
+                <h5>Support</h5><a href="help.html">Help Center</a><a href="help.html">Contact Us</a><a href="#">Privacy
+                    Policy</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Medi-Connect. All rights reserved. | Made with ❤️ in India</p>
+        </div>
+    </footer>
+
+    <!-- DR. MIRA CHATBOT -->
+    <button class="chatbot-btn" onclick="toggleChat()" title="Chat with Dr. Mira" id="miraChatBtn">
+        <img src="{{ url_for('static', filename='icons/dr-mira.png') }}" alt="Dr. Mira">
+    </button>
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header">
+            <div class="chat-header-image-wrap">
+                <img src="{{ url_for('static', filename='icons/dr-mira.png') }}" alt="Dr. Mira" class="chat-avatar">
+                <span class="chat-avatar-online"></span>
+            </div>
+            <div class="chat-header-info">
+                <div class="chat-title">Dr. Mira</div>
+                <div class="chat-subtitle">🟢 Online · 24×7 AI Medical Assistant</div>
+            </div>
+            <button class="chat-close" onclick="toggleChat()">✕</button>
+        </div>
+        <div class="mira-intro-banner">
+            Hello! I'm Dr. Mira – Your 24×7 AI Medical Assistant. 💙
+        </div>
+        <div class="chat-messages" id="chatMessages">
+        </div>
+        <div class="chat-quick">
+            <button class="quick-btn" onclick="quickChat('Check Symptoms')">🩺 Check Symptoms</button>
+            <button class="quick-btn" onclick="quickChat('Book Doctor')">📅 Book Doctor</button>
+            <button class="quick-btn" onclick="quickChat('Find Hospital')">🏥 Find Hospital</button>
+            <button class="quick-btn" onclick="quickChat('Emergency')">🚨 Emergency</button>
+        </div>
+        <div class="chat-input">
+            <button class="voice-btn" id="voiceBtn" onclick="startVoiceInput()" title="Voice chat">🎤</button>
+            <input type="text" placeholder="Ask Dr. Mira anything..." id="chatIn"
+                onkeypress="if(event.key==='Enter')sendChat()">
+            <button class="chat-send" onclick="sendChat()">Send</button>
+        </div>
+    </div>
+
+
+    <!-- LOGIN MODAL -->
+    <div class="modal-overlay" id="loginModal" style="display:none"
+        onclick="if(event.target===this)this.style.display='none'">
+        <div class="modal-box login-modal">
+            <h2>Welcome to Medi-Connect</h2>
+            <div class="tabs"><button class="tab-btn2 active" id="loginTabBtn"
+                    onclick="switchAuthTab('login')">Login</button><button class="tab-btn2" id="signupTabBtn"
+                    onclick="switchAuthTab('signup')">Sign Up</button></div>
+            <div id="loginForm">
+                <div class="login-form"><input type="email" placeholder="Email address" id="loginEmail"><input
+                        type="password" placeholder="Password" id="loginPassword"><button class="btn btn-primary"
+                        style="width:100%;padding:12px" onclick="doLogin()">Login</button></div>
+            </div>
+            <div id="signupForm" style="display:none">
+                <div class="login-form"><input type="text" placeholder="Full Name" id="signupName"><input type="tel"
+                        placeholder="Mobile Number" id="signupMobile"><input type="password" placeholder="Password"
+                        id="signupPassword"><input type="password" placeholder="Confirm Password"
+                        id="signupConfirm"><button class="btn btn-secondary" style="width:100%;padding:12px"
+                        onclick="doSignup()">Create Account</button></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="notif" id="notif"></div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self Care & Wellness | Medi-Connect</title>
+    <meta name="description"
+        content="Diet plans, health videos, BMI calculator, health trackers, and lab report management. Take charge of your wellness with Medi-Connect.">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <meta name="theme-color" content="#2472d8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Medi-Connect">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='icons/icon-192.svg') }}">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="home.html" class="logo">
+            <div class="logo-icon"><svg viewBox="0 0 24 24">
+                    <rect x="10" y="7" width="4" height="10" rx="1" />
+                    <rect x="7" y="10" width="10" height="4" rx="1" />
+                </svg></div>
+            <span class="logo-text">Medi-Connect</span>
+        </a>
+        <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+        <div class="nav-links" id="navLinks">
+            <a href="home.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="insurance.html">Insurance</a>
+            <a href="categories.html">Categories</a>
+            <a href="selfcare.html">Self Care</a>
+            <a href="appointment.html">Book Appointment</a>
+            <a href="medicines.html">My Medicines</a>`n            <a href="help.html">Help</a>
+        </div>
+        <div class="nav-right">
+            <div class="search-bar">
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zM9.5 14A4.5 4.5 0 1114 9.5 4.494 4.494 0 019.5 14z" />
+                </svg>
+                <input type="text" placeholder="Search doctors & hospitals...">
+            </div>
+            <button class="btn btn-primary" id="authBtn"
+                onclick="document.getElementById('loginModal').style.display='flex'">Login / Sign Up</button>
+            <a href="settings.html" class="settings-icon" title="Settings">⚙️</a>
+        </div>
+    </nav>
+
+    <!-- DIET PLANS -->
+    <section>
+        <div class="section-title">🥗 Diet Plans & Nutrition</div>
+        <div class="section-sub">Curated diet plans for different health goals</div>
+        <div class="selfcare-grid">
+            <div class="diet-card" onclick="showNotif('🥗 Opening Diabetes-Friendly Diet Plan...')">
+                <div class="diet-icon">🍚</div>
+                <div class="diet-name">Diabetes-Friendly Diet</div>
+                <div class="diet-desc">Low glycemic index meals, balanced carbs & proteins. Ideal for blood sugar
+                    management.</div>
+            </div>
+            <div class="diet-card" onclick="showNotif('❤️ Opening Heart-Healthy Diet Plan...')">
+                <div class="diet-icon">❤️</div>
+                <div class="diet-name">Heart-Healthy Diet</div>
+                <div class="diet-desc">Low sodium, high omega-3 meals. Focus on fruits, vegetables, lean proteins.</div>
+            </div>
+            <div class="diet-card" onclick="showNotif('💪 Opening Weight Management Plan...')">
+                <div class="diet-icon">💪</div>
+                <div class="diet-name">Weight Management</div>
+                <div class="diet-desc">Calorie-controlled, fiber-rich meals. Portion guidance and meal timing tips.
+                </div>
+            </div>
+            <div class="diet-card" onclick="showNotif('🤰 Opening Pregnancy Nutrition Plan...')">
+                <div class="diet-icon">🤰</div>
+                <div class="diet-name">Pregnancy Nutrition</div>
+                <div class="diet-desc">Folate-rich foods, iron sources, and balanced nutrition for mom & baby.</div>
+            </div>
+            <div class="diet-card" onclick="showNotif('👶 Opening Child Growth Diet Plan...')">
+                <div class="diet-icon">👶</div>
+                <div class="diet-name">Child Growth Diet</div>
+                <div class="diet-desc">Balanced nutrition for growing children — calcium, protein, vitamins & minerals.
+                </div>
+            </div>
+            <div class="diet-card" onclick="showNotif('🧘 Opening Ayurvedic Diet Plan...')">
+                <div class="diet-icon">🧘</div>
+                <div class="diet-name">Ayurvedic Wellness</div>
+                <div class="diet-desc">Dosha-based diet recommendations. Traditional Indian wellness with modern
+                    science.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HEALTH VIDEOS -->
+    <section style="background: var(--bg)">
+        <div class="section-title">🎥 Health Videos</div>
+        <div class="section-sub">Expert health tips & wellness tutorials</div>
+        <div class="video-grid">
+            <div class="video-card" onclick="showNotif('▶️ Playing: Morning Yoga for Beginners')">
+                <div class="video-thumb" style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9)">
+                    🧘<div class="play-btn">▶</div>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">Morning Yoga for Beginners</div>
+                    <div class="video-channel">Dr. Wellness · 12 min</div>
+                </div>
+            </div>
+            <div class="video-card" onclick="showNotif('▶️ Playing: Diabetes Management Tips')">
+                <div class="video-thumb" style="background:linear-gradient(135deg,#e3f2fd,#bbdefb)">
+                    💉<div class="play-btn">▶</div>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">Diabetes Management Tips</div>
+                    <div class="video-channel">Dr. Rajesh Kumar · 18 min</div>
+                </div>
+            </div>
+            <div class="video-card" onclick="showNotif('▶️ Playing: Heart Health Exercises')">
+                <div class="video-thumb" style="background:linear-gradient(135deg,#fce4ec,#f8bbd0)">
+                    ❤️<div class="play-btn">▶</div>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">Heart Health Exercises</div>
+                    <div class="video-channel">Dr. Priya Sharma · 15 min</div>
+                </div>
+            </div>
+            <div class="video-card" onclick="showNotif('▶️ Playing: Stress Management Techniques')">
+                <div class="video-thumb" style="background:linear-gradient(135deg,#f3e5f5,#e1bee7)">
+                    🧠<div class="play-btn">▶</div>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">Stress Management Techniques</div>
+                    <div class="video-channel">MediConnect Wellness · 10 min</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BMI Calculator -->
+    <section>
+        <div class="section-title">📊 BMI Calculator</div>
+        <div class="section-sub">Check your Body Mass Index instantly</div>
+        <div class="bmi-calc">
+            <h3>📊 Calculate Your BMI</h3>
+            <div class="bmi-inputs">
+                <input type="number" placeholder="Height (cm)" id="bmiHeight" min="50" max="250">
+                <input type="number" placeholder="Weight (kg)" id="bmiWeight" min="10" max="300">
+            </div>
+            <button class="btn btn-primary" onclick="calcBMI()">Calculate BMI</button>
+            <div class="bmi-result" id="bmiResult"></div>
+        </div>
+    </section>
+
+    <!-- HEALTH TRACKERS -->
+    <section style="background: var(--bg)">
+        <div class="section-title">📈 Health Trackers</div>
+        <div class="section-sub">Monitor your vital health metrics</div>
+        <div class="tracker-grid">
+            <div class="tracker-card">
+                <h4>💓 Blood Pressure Log</h4>
+                <table class="tracker-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Systolic</th>
+                            <th>Diastolic</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Feb 20</td>
+                            <td>122</td>
+                            <td>78</td>
+                            <td><span class="badge badge-green">Normal</span></td>
+                        </tr>
+                        <tr>
+                            <td>Feb 18</td>
+                            <td>135</td>
+                            <td>88</td>
+                            <td><span class="badge badge-yellow">Elevated</span></td>
+                        </tr>
+                        <tr>
+                            <td>Feb 15</td>
+                            <td>118</td>
+                            <td>75</td>
+                            <td><span class="badge badge-green">Normal</span></td>
+                        </tr>
+                        <tr>
+                            <td>Feb 12</td>
+                            <td>142</td>
+                            <td>92</td>
+                            <td><span class="badge badge-red">High</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="tracker-card">
+                <h4>🩸 Blood Sugar Log</h4>
+                <table class="tracker-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Fasting</th>
+                            <th>Post-Meal</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Feb 20</td>
+                            <td>98 mg/dL</td>
+                            <td>140 mg/dL</td>
+                            <td><span class="badge badge-green">Normal</span></td>
+                        </tr>
+                        <tr>
+                            <td>Feb 18</td>
+                            <td>112 mg/dL</td>
+                            <td>180 mg/dL</td>
+                            <td><span class="badge badge-yellow">Elevated</span></td>
+                        </tr>
+                        <tr>
+                            <td>Feb 15</td>
+                            <td>95 mg/dL</td>
+                            <td>135 mg/dL</td>
+                            <td><span class="badge badge-green">Normal</span></td>
+                        </tr>
+                        <tr>
+                            <td>Feb 12</td>
+                            <td>130 mg/dL</td>
+                            <td>210 mg/dL</td>
+                            <td><span class="badge badge-red">High</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- LAB REPORTS -->
+    <section>
+        <div class="section-title">🔬 Lab Reports</div>
+        <div class="section-sub">Upload & manage your medical lab reports</div>
+        <div class="lab-upload-grid">
+            <div class="lab-card" onclick="showNotif('📤 Upload Blood Test Report (feature coming soon)')">
+                <div class="lab-icon">🩸</div>
+                <div class="lab-type">Blood Test</div>
+                <button class="lab-upload-btn">📤 Upload</button>
+            </div>
+            <div class="lab-card" onclick="showNotif('📤 Upload Urine Test Report (feature coming soon)')">
+                <div class="lab-icon">🧪</div>
+                <div class="lab-type">Urine Test</div>
+                <button class="lab-upload-btn">📤 Upload</button>
+            </div>
+            <div class="lab-card" onclick="showNotif('📤 Upload X-Ray Report (feature coming soon)')">
+                <div class="lab-icon">🦴</div>
+                <div class="lab-type">X-Ray</div>
+                <button class="lab-upload-btn">📤 Upload</button>
+            </div>
+            <div class="lab-card" onclick="showNotif('📤 Upload MRI/CT Report (feature coming soon)')">
+                <div class="lab-icon">🧠</div>
+                <div class="lab-type">MRI / CT Scan</div>
+                <button class="lab-upload-btn">📤 Upload</button>
+            </div>
+        </div>
+
+        <!-- Lab Dashboard -->
+        <div class="dashboard-tabs">
+            <button class="tab-btn active" onclick="switchTab(this,'tabRecent')">📋 Recent Reports</button>
+            <button class="tab-btn" onclick="switchTab(this,'tabTimeline')">📊 Timeline</button>
+        </div>
+        <div class="tab-content" id="tabRecent">
+            <div style="padding:16px;text-align:center;color:var(--text-light);">
+                <div style="font-size:3rem;margin-bottom:12px">📂</div>
+                <h4>No Reports Uploaded Yet</h4>
+                <p style="font-size:0.85rem;margin-top:8px">Upload your first lab report to start tracking your health
+                    journey.</p>
+                <button class="btn btn-primary" style="margin-top:16px"
+                    onclick="showNotif('📤 Upload feature coming soon!')">📤 Upload Report</button>
+            </div>
+        </div>
+        <div class="tab-content" id="tabTimeline" style="display:none">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div>
+                    <div class="timeline-date">Feb 20, 2024</div>
+                    <div class="timeline-title">Complete Blood Count (CBC)</div>
+                    <div class="timeline-desc">All values within normal range. Hemoglobin: 14.2 g/dL</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div>
+                    <div class="timeline-date">Jan 15, 2024</div>
+                    <div class="timeline-title">Lipid Profile</div>
+                    <div class="timeline-desc">Total Cholesterol: 195 mg/dL (Borderline). LDL: 128 mg/dL</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div>
+                    <div class="timeline-date">Dec 10, 2023</div>
+                    <div class="timeline-title">HbA1c Test</div>
+                    <div class="timeline-desc">HbA1c: 6.1% (Pre-diabetic range). Fasting glucose: 110 mg/dL</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo" style="margin-bottom:12px">
+                    <div class="logo-icon"><svg viewBox="0 0 24 24">
+                            <rect x="10" y="7" width="4" height="10" rx="1" />
+                            <rect x="7" y="10" width="10" height="4" rx="1" />
+                        </svg></div>
+                    <span class="logo-text" style="-webkit-text-fill-color:white">Medi-Connect</span>
+                </div>
+                <p>India's most trusted digital healthcare platform.</p>
+            </div>
+            <div class="footer-col">
+                <h5>Services</h5><a href="appointment.html">Book Appointment</a><a href="home.html">Emergency</a><a
+                    href="home.html">Blood Bank</a>
+            </div>
+            <div class="footer-col">
+                <h5>Hospitals</h5><a href="categories.html">Apollo</a><a href="categories.html">Fortis</a><a
+                    href="categories.html">AIIMS</a>
+            </div>
+            <div class="footer-col">
+                <h5>Support</h5><a href="help.html">Help Center</a><a href="help.html">Contact Us</a><a href="#">Privacy
+                    Policy</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Medi-Connect. All rights reserved. | Made with ❤️ in India</p>
+        </div>
+    </footer>
+
+    <!-- LOGIN MODAL -->
+    <div class="modal-overlay" id="loginModal" style="display:none"
+        onclick="if(event.target===this)this.style.display='none'">
+        <div class="modal-box login-modal">
+            <h2>Welcome to Medi-Connect</h2>
+            <div class="tabs"><button class="tab-btn2 active" id="loginTabBtn"
+                    onclick="switchAuthTab('login')">Login</button><button class="tab-btn2" id="signupTabBtn"
+                    onclick="switchAuthTab('signup')">Sign Up</button></div>
+            <div id="loginForm">
+                <div class="login-form"><input type="email" placeholder="Email address" id="loginEmail"><input
+                        type="password" placeholder="Password" id="loginPassword"><button class="btn btn-primary"
+                        style="width:100%;padding:12px" onclick="doLogin()">Login</button></div>
+            </div>
+            <div id="signupForm" style="display:none">
+                <div class="login-form"><input type="text" placeholder="Full Name" id="signupName"><input type="tel"
+                        placeholder="Mobile Number" id="signupMobile"><input type="password" placeholder="Password"
+                        id="signupPassword"><input type="password" placeholder="Confirm Password"
+                        id="signupConfirm"><button class="btn btn-secondary" style="width:100%;padding:12px"
+                        onclick="doSignup()">Create Account</button></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="notif" id="notif"></div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>

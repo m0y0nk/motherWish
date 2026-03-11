@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2472d8"/>
+      <stop offset="100%" style="stop-color:#00a651"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+  <rect width="512" height="512" rx="100" fill="url(#bg)"/>
+  <g filter="url(#shadow)">
+    <rect x="210" y="120" width="92" height="272" rx="16" fill="white"/>
+    <rect x="120" y="210" width="272" height="92" rx="16" fill="white"/>
+  </g>
+  <text x="256" y="460" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="42" font-weight="800" fill="rgba(255,255,255,0.9)">Medi-Connect</text>
+</svg>

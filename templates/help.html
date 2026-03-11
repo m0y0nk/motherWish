@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help & Support | Medi-Connect</title>
+    <meta name="description"
+        content="Get help with Medi-Connect. FAQs, 24/7 helpline, contact form, and emergency numbers. We're here for you around the clock.">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <meta name="theme-color" content="#2472d8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Medi-Connect">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='icons/icon-192.svg') }}">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="home.html" class="logo">
+            <div class="logo-icon"><svg viewBox="0 0 24 24">
+                    <rect x="10" y="7" width="4" height="10" rx="1" />
+                    <rect x="7" y="10" width="10" height="4" rx="1" />
+                </svg></div>
+            <span class="logo-text">Medi-Connect</span>
+        </a>
+        <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+        <div class="nav-links" id="navLinks">
+            <a href="home.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="insurance.html">Insurance</a>
+            <a href="categories.html">Categories</a>
+            <a href="selfcare.html">Self Care</a>
+            <a href="appointment.html">Book Appointment</a>
+            <a href="medicines.html">My Medicines</a>`n            <a href="help.html">Help</a>
+        </div>
+        <div class="nav-right">
+            <div class="search-bar">
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zM9.5 14A4.5 4.5 0 1114 9.5 4.494 4.494 0 019.5 14z" />
+                </svg>
+                <input type="text" placeholder="Search doctors & hospitals...">
+            </div>
+            <button class="btn btn-primary" id="authBtn"
+                onclick="document.getElementById('loginModal').style.display='flex'">Login / Sign Up</button>
+            <a href="settings.html" class="settings-icon" title="Settings">⚙️</a>
+        </div>
+    </nav>
+
+    <!-- HELP & SUPPORT -->
+    <section>
+        <div class="section-title">🆘 Help & Support</div>
+        <div class="section-sub">24/7 Helpline · FAQ · Contact Us</div>
+        <div class="help-grid">
+            <!-- FAQ -->
+            <div class="help-card">
+                <h3 style="font-size:1.2rem;font-weight:700;margin-bottom:20px;display:flex;align-items:center;gap:8px">
+                    ❓ Frequently Asked Questions</h3>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-q">How do I book an appointment? <span>▼</span></div>
+                    <div class="faq-a">Go to the "Book Appointment" page, select your doctor, choose a date and time
+                        slot, and confirm. You'll get an instant OPD queue number and QR code for check-in.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-q">Is the 108 ambulance service free? <span>▼</span></div>
+                    <div class="faq-a">Yes! 108 is a free government ambulance service available 24/7 across India. You
+                        can also call directly from our Home page.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-q">How do I check blood availability? <span>▼</span></div>
+                    <div class="faq-a">The Home page shows real-time blood bank availability with live updates every 5
+                        seconds. For emergency requests, call our helpline at 9343335183.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-q">Which insurance providers are supported? <span>▼</span></div>
+                    <div class="faq-a">We support Star Health, HDFC Ergo, Bajaj Allianz, New India Assurance, United
+                        India Insurance, and government schemes like PM-JAY, CGHS, and ESIC.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-q">Can I cancel or reschedule an appointment? <span>▼</span></div>
+                    <div class="faq-a">Yes, you can cancel or reschedule up to 2 hours before your appointment time.
+                        Contact our helpline or use the chat assistant for help.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-q">How does the medicine reminder work? <span>▼</span></div>
+                    <div class="faq-a">Our medicine management system tracks all your prescriptions, sends reminders at
+                        scheduled times, and even supports multi-language instructions in Hindi, Kannada, Tamil, Telugu,
+                        and Malayalam.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-q">Is my data secure? <span>▼</span></div>
+                    <div class="faq-a">Absolutely. We follow HIPAA-grade data protection standards. All data is
+                        encrypted in transit and at rest. We never share your medical data with third parties.</div>
+                </div>
+            </div>
+
+            <!-- Contact & Helpline -->
+            <div>
+                <div class="help-card" style="margin-bottom:20px">
+                    <h3
+                        style="font-size:1.2rem;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px">
+                        📞 Helpline</h3>
+                    <div class="helpline-num"><a href="tel:9343335183"
+                            style="color:var(--primary);text-decoration:none">📞 9343335183</a></div>
+                    <div class="badge-247">🟢 Available 24/7</div>
+                    <p style="font-size:0.85rem;color:var(--text-light);margin-top:14px;line-height:1.7">Call us anytime
+                        for medical emergencies, appointment help, insurance queries, or general support. Our trained
+                        healthcare assistants are available around the clock.</p>
+                    <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap">
+                        <a href="tel:108" class="btn btn-danger" style="text-decoration:none">🚑 108 Emergency</a>
+                        <a href="tel:9343335183" class="btn btn-primary" style="text-decoration:none">📞 Call
+                            Helpline</a>
+                    </div>
+                </div>
+
+                <div class="help-card">
+                    <h3
+                        style="font-size:1.2rem;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px">
+                        📧 Contact Us</h3>
+                    <div class="contact-form">
+                        <input type="text" placeholder="Your Name" id="contactName">
+                        <input type="email" placeholder="Email Address" id="contactEmail">
+                        <input type="text" placeholder="Subject" id="contactSubject">
+                        <textarea placeholder="Your Message..." id="contactMessage"></textarea>
+                        <button class="btn btn-primary" onclick="handleContact()">📨 Send Message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo" style="margin-bottom:12px">
+                    <div class="logo-icon"><svg viewBox="0 0 24 24">
+                            <rect x="10" y="7" width="4" height="10" rx="1" />
+                            <rect x="7" y="10" width="10" height="4" rx="1" />
+                        </svg></div>
+                    <span class="logo-text" style="-webkit-text-fill-color:white">Medi-Connect</span>
+                </div>
+                <p>India's most trusted digital healthcare platform.</p>
+            </div>
+            <div class="footer-col">
+                <h5>Services</h5><a href="appointment.html">Book Appointment</a><a href="home.html">Emergency</a><a
+                    href="home.html">Blood Bank</a>
+            </div>
+            <div class="footer-col">
+                <h5>Hospitals</h5><a href="categories.html">Apollo</a><a href="categories.html">Fortis</a><a
+                    href="categories.html">AIIMS</a>
+            </div>
+            <div class="footer-col">
+                <h5>Support</h5><a href="help.html">Help Center</a><a href="help.html">Contact Us</a><a href="#">Privacy
+                    Policy</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Medi-Connect. All rights reserved. | Made with ❤️ in India</p>
+        </div>
+    </footer>
+
+    <!-- LOGIN MODAL -->
+    <div class="modal-overlay" id="loginModal" style="display:none"
+        onclick="if(event.target===this)this.style.display='none'">
+        <div class="modal-box login-modal">
+            <h2>Welcome to Medi-Connect</h2>
+            <div class="tabs"><button class="tab-btn2 active" id="loginTabBtn"
+                    onclick="switchAuthTab('login')">Login</button><button class="tab-btn2" id="signupTabBtn"
+                    onclick="switchAuthTab('signup')">Sign Up</button></div>
+            <div id="loginForm">
+                <div class="login-form"><input type="email" placeholder="Email address" id="loginEmail"><input
+                        type="password" placeholder="Password" id="loginPassword"><button class="btn btn-primary"
+                        style="width:100%;padding:12px" onclick="doLogin()">Login</button></div>
+            </div>
+            <div id="signupForm" style="display:none">
+                <div class="login-form"><input type="text" placeholder="Full Name" id="signupName"><input type="tel"
+                        placeholder="Mobile Number" id="signupMobile"><input type="password" placeholder="Password"
+                        id="signupPassword"><input type="password" placeholder="Confirm Password"
+                        id="signupConfirm"><button class="btn btn-secondary" style="width:100%;padding:12px"
+                        onclick="doSignup()">Create Account</button></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="notif" id="notif"></div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script>
+        function handleContact() {
+            const name = document.getElementById('contactName').value;
+            const email = document.getElementById('contactEmail').value;
+            const subject = document.getElementById('contactSubject').value;
+            const message = document.getElementById('contactMessage').value;
+            if (!name || !email || !message) { showNotif('⚠️ Please fill in all required fields.'); return; }
+            showNotif('✅ Message sent successfully! We\'ll get back to you within 24 hours.');
+            document.getElementById('contactName').value = '';
+            document.getElementById('contactEmail').value = '';
+            document.getElementById('contactSubject').value = '';
+            document.getElementById('contactMessage').value = '';
+        }
+    </script>
+</body>
+
+</html>

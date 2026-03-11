@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment | Medi-Connect</title>
+    <meta name="description"
+        content="Book doctor appointments online. Choose your doctor, select date & time, get instant OPD queue number and QR code check-in.">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <meta name="theme-color" content="#2472d8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Medi-Connect">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='icons/icon-192.svg') }}">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="home.html" class="logo">
+            <div class="logo-icon"><svg viewBox="0 0 24 24">
+                    <rect x="10" y="7" width="4" height="10" rx="1" />
+                    <rect x="7" y="10" width="10" height="4" rx="1" />
+                </svg></div>
+            <span class="logo-text">Medi-Connect</span>
+        </a>
+        <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+        <div class="nav-links" id="navLinks">
+            <a href="home.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="insurance.html">Insurance</a>
+            <a href="categories.html">Categories</a>
+            <a href="selfcare.html">Self Care</a>
+            <a href="appointment.html">Book Appointment</a>
+            <a href="medicines.html">My Medicines</a>`n            <a href="help.html">Help</a>
+        </div>
+        <div class="nav-right">
+            <div class="search-bar">
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zM9.5 14A4.5 4.5 0 1114 9.5 4.494 4.494 0 019.5 14z" />
+                </svg>
+                <input type="text" placeholder="Search doctors & hospitals...">
+            </div>
+            <button class="btn btn-primary" id="authBtn"
+                onclick="document.getElementById('loginModal').style.display='flex'">Login / Sign Up</button>
+            <a href="settings.html" class="settings-icon" title="Settings">⚙️</a>
+        </div>
+    </nav>
+
+    <!-- APPOINTMENT -->
+    <section>
+        <div class="section-title">📅 Book Appointment</div>
+        <div class="section-sub">Select Doctor · Pick Date & Time · Get Instant OPD Queue</div>
+
+        <div class="appt-container">
+            <div class="appt-steps">
+                <div class="step-item done">
+                    <div class="step-num">1</div>Select Doctor
+                </div>
+                <div class="step-item active">
+                    <div class="step-num">2</div>Pick Slot
+                </div>
+                <div class="step-item">
+                    <div class="step-num">3</div>Confirm
+                </div>
+            </div>
+
+            <div class="appt-card">
+                <div class="appt-form">
+                    <div class="form-group">
+                        <label>👨‍⚕️ Select Doctor</label>
+                        <select id="apptDoctor">
+                            <option>Dr. Rajesh Kumar — Cardiology — Apollo</option>
+                            <option>Dr. Priya Sharma — Neurology — Fortis</option>
+                            <option>Dr. Anil Mehta — Orthopedics — AIIMS</option>
+                            <option>Dr. Sunita Reddy — Gynecology — Manipal</option>
+                            <option>Dr. Vikram Singh — Pediatrics — Max</option>
+                            <option>Dr. Meera Patel — ENT — Columbia Asia</option>
+                            <option>Dr. Arjun Nair — Pulmonology — Narayana</option>
+                            <option>Dr. Kavitha Rao — Oncology — HCG</option>
+                            <option>Dr. Suresh Babu — Urology — Aster CMI</option>
+                            <option>Dr. Deepa Krishnan — Gastro — BGS</option>
+                            <option>Dr. Ramesh Gupta — Dental — Clove Dental</option>
+                            <option>Dr. Anjali Das — Radiology — Medanta</option>
+                            <option>Dr. Sanjay Verma — Ophthalmology — Sankara Eye</option>
+                            <option>Dr. Lakshmi Iyer — Nephrology — KMC</option>
+                            <option>Dr. Prakash Bhat — Neurosurgery — NIMHANS</option>
+                            <option>Dr. Rekha Pillai — IVF — Nova IVI</option>
+                            <option>Dr. Mohan Kumar — Ayurveda — SDM</option>
+                            <option>Dr. Fatima Khan — General Medicine — Victoria</option>
+                            <option>Dr. Ravi Shankar — General Surgery — St Johns</option>
+                            <option>Dr. Pooja Nambiar — Dermatology — KIMS</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>📅 Select Date</label>
+                        <input type="date" id="apptDate">
+                    </div>
+                    <div class="form-group">
+                        <label>⏰ Select Time Slot</label>
+                        <div class="time-slots">
+                            <div class="time-slot" onclick="selectSlot(this)">9:00 AM</div>
+                            <div class="time-slot" onclick="selectSlot(this)">9:30 AM</div>
+                            <div class="time-slot" onclick="selectSlot(this)">10:00 AM</div>
+                            <div class="time-slot" onclick="selectSlot(this)">10:30 AM</div>
+                            <div class="time-slot" onclick="selectSlot(this)">11:00 AM</div>
+                            <div class="time-slot unavailable" style="cursor:not-allowed">11:30 AM</div>
+                            <div class="time-slot" onclick="selectSlot(this)">2:00 PM</div>
+                            <div class="time-slot" onclick="selectSlot(this)">2:30 PM</div>
+                            <div class="time-slot" onclick="selectSlot(this)">3:00 PM</div>
+                            <div class="time-slot unavailable" style="cursor:not-allowed">3:30 PM</div>
+                            <div class="time-slot" onclick="selectSlot(this)">4:00 PM</div>
+                            <div class="time-slot" onclick="selectSlot(this)">4:30 PM</div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" style="padding:14px;font-size:1rem" onclick="bookAppointment()">✅
+                        Confirm Appointment</button>
+                </div>
+
+                <div class="appt-info">
+                    <div class="queue-box">
+                        <div class="queue-label">🎫 Your OPD Queue Number</div>
+                        <div class="queue-num" id="queueNum">--</div>
+                        <div class="queue-wait">⏱️ Estimated wait: ~15-20 min</div>
+                    </div>
+                    <div class="qr-box">
+                        <div class="qr-placeholder"></div>
+                        <p style="font-size:0.82rem;color:var(--text-light);font-weight:600">📱 Show this QR at hospital
+                            counter</p>
+                        <p style="font-size:0.72rem;color:var(--text-light)">Auto-generated after booking</p>
+                    </div>
+                    <div style="background:var(--bg);border-radius:var(--radius);padding:16px">
+                        <h4 style="font-size:0.9rem;font-weight:700;margin-bottom:8px">📋 Booking Instructions</h4>
+                        <ul style="font-size:0.82rem;color:var(--text-light);padding-left:16px;line-height:1.8">
+                            <li>Arrive 15 minutes before your slot</li>
+                            <li>Carry valid ID & insurance card</li>
+                            <li>Show QR code at reception</li>
+                            <li>Carry previous prescriptions/reports</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo" style="margin-bottom:12px">
+                    <div class="logo-icon"><svg viewBox="0 0 24 24">
+                            <rect x="10" y="7" width="4" height="10" rx="1" />
+                            <rect x="7" y="10" width="10" height="4" rx="1" />
+                        </svg></div>
+                    <span class="logo-text" style="-webkit-text-fill-color:white">Medi-Connect</span>
+                </div>
+                <p>India's most trusted digital healthcare platform.</p>
+            </div>
+            <div class="footer-col">
+                <h5>Services</h5><a href="appointment.html">Book Appointment</a><a href="home.html">Emergency</a><a
+                    href="home.html">Blood Bank</a>
+            </div>
+            <div class="footer-col">
+                <h5>Hospitals</h5><a href="categories.html">Apollo</a><a href="categories.html">Fortis</a><a
+                    href="categories.html">AIIMS</a>
+            </div>
+            <div class="footer-col">
+                <h5>Support</h5><a href="help.html">Help Center</a><a href="help.html">Contact Us</a><a href="#">Privacy
+                    Policy</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Medi-Connect. All rights reserved. | Made with ❤️ in India</p>
+        </div>
+    </footer>
+
+    <!-- LOGIN MODAL -->
+    <div class="modal-overlay" id="loginModal" style="display:none"
+        onclick="if(event.target===this)this.style.display='none'">
+        <div class="modal-box login-modal">
+            <h2>Welcome to Medi-Connect</h2>
+            <div class="tabs"><button class="tab-btn2 active" id="loginTabBtn"
+                    onclick="switchAuthTab('login')">Login</button><button class="tab-btn2" id="signupTabBtn"
+                    onclick="switchAuthTab('signup')">Sign Up</button></div>
+            <div id="loginForm">
+                <div class="login-form"><input type="email" placeholder="Email address" id="loginEmail"><input
+                        type="password" placeholder="Password" id="loginPassword"><button class="btn btn-primary"
+                        style="width:100%;padding:12px" onclick="doLogin()">Login</button></div>
+            </div>
+            <div id="signupForm" style="display:none">
+                <div class="login-form"><input type="text" placeholder="Full Name" id="signupName"><input type="tel"
+                        placeholder="Mobile Number" id="signupMobile"><input type="password" placeholder="Password"
+                        id="signupPassword"><input type="password" placeholder="Confirm Password"
+                        id="signupConfirm"><button class="btn btn-secondary" style="width:100%;padding:12px"
+                        onclick="doSignup()">Create Account</button></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="notif" id="notif"></div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>
