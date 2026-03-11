@@ -13,5 +13,5 @@
     <rect x="210" y="120" width="92" height="272" rx="16" fill="white"/>
     <rect x="120" y="210" width="272" height="92" rx="16" fill="white"/>
   </g>
-  <text x="256" y="460" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="42" font-weight="800" fill="rgba(255,255,255,0.9)">Medi-Connect</text>
+  <text x="256" y="460" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="42" font-weight="800" fill="rgba(255,255,255,0.9)">MotherWish</text>
 </svg>

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'mediconnect-v1';
+const CACHE_NAME = 'MotherWish-v1';
 const ASSETS = [
     '/',
     '/static/css/styles.css',
@@ -6,7 +6,7 @@ const ASSETS = [
     '/static/manifest.json',
     '/static/icons/icon-192.svg',
     '/static/icons/icon-512.svg',
-    '/static/icons/dr-mira.png'
+    '/static/icons/dr-Myra.png'
 ];
 
 // Install — cache all core assets

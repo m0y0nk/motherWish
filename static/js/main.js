@@ -1,4 +1,4 @@
-/* ============= MEDI-CONNECT SHARED JAVASCRIPT ============= */
+/* ============= MotherWish SHARED JAVASCRIPT ============= */
 
 // ===== DATA =====
 const bloodData = [
@@ -57,7 +57,7 @@ const chatResponses = {
   'blood availability': 'Current blood availability:\n🟢 A+: 24 units\n🟢 O+: 42 units\n🟡 A-: 8 units (Low)\n🔴 B-: 3 units (Critical)\n\nFor emergency blood requests, call 9343335183 🩸',
   'find doctors': 'We have 20+ verified doctors across all specializations:\n👨‍⚕️ Cardiology, Neurology, Orthopedics\n👩‍⚕️ Gynecology, Pediatrics, ENT\n🔬 Oncology, Nephrology, and more!\n\nUse filters on the Categories page 🔍',
   'insurance help': 'We support major insurance providers:\n✅ Star Health Insurance\n✅ HDFC Ergo\n✅ Bajaj Allianz\n✅ New India Assurance\n✅ United India Insurance\n\nCashless treatment at 500+ hospitals! 🛡️',
-  'emergency': '🚨 EMERGENCY CONTACTS:\n📞 108 — Free Government Ambulance\n📞 9343335183 — Medi-Connect Helpline\n🏥 Apollo: 080-22941111\n🏥 Fortis: 011-42776222\n\nDo you need an ambulance right now? 🚑'
+  'emergency': '🚨 EMERGENCY CONTACTS:\n📞 108 — Free Government Ambulance\n📞 9343335183 — MotherWish Helpline\n🏥 Apollo: 080-22941111\n🏥 Fortis: 011-42776222\n\nDo you need an ambulance right now? 🚑'
 };
 
 let myMedicines = [];
@@ -144,7 +144,7 @@ async function doSignup() {
     if (res.ok) {
       localStorage.setItem('mediUser', JSON.stringify(data.user));
       document.getElementById('loginModal').style.display = 'none';
-      showNotif('✅ Account created! Welcome to Medi-Connect.');
+      showNotif('✅ Account created! Welcome to MotherWish.');
       initAuth();
       if (typeof initMedicines === 'function') initMedicines();
     } else {
@@ -377,9 +377,9 @@ function switchTab(btn, id) {
 
 function toggleFaq(el) { el.classList.toggle('open'); }
 
-// ===== DR. MIRA CHATBOT =====
+// ===== DR. Myra CHATBOT =====
 
-const MIRA_IMG = 'icons/dr-mira.png?v=2';
+const Myra_IMG = 'icons/dr-Myra.png?v=2';
 
 // Chat state machine for multi-step flows
 let chatState = null;
@@ -388,7 +388,7 @@ function toggleChat() {
   document.getElementById('chatWindow')?.classList.toggle('open');
 }
 
-// Add a Dr. Mira bot message with avatar + optional option buttons
+// Add a Dr. Myra bot message with avatar + optional option buttons
 function addBotMsg(text, options = null, isEmergency = false) {
   const msgs = document.getElementById('chatMessages');
   if (!msgs) return;
@@ -397,9 +397,9 @@ function addBotMsg(text, options = null, isEmergency = false) {
   row.className = 'chat-msg-row';
 
   const img = document.createElement('img');
-  img.src = MIRA_IMG;
+  img.src = Myra_IMG;
   img.className = 'bot-icon-mini';
-  img.alt = 'Dr. Mira';
+  img.alt = 'Dr. Myra';
 
   const bubble = document.createElement('div');
   bubble.className = 'chat-msg bot' + (isEmergency ? ' emergency-msg' : '');
@@ -407,10 +407,10 @@ function addBotMsg(text, options = null, isEmergency = false) {
 
   if (options && options.length > 0) {
     const optDiv = document.createElement('div');
-    optDiv.className = 'mira-options';
+    optDiv.className = 'Myra-options';
     options.forEach(opt => {
       const btn = document.createElement('button');
-      btn.className = 'mira-option-btn' + (isEmergency ? ' emergency-opt' : '');
+      btn.className = 'Myra-option-btn' + (isEmergency ? ' emergency-opt' : '');
       btn.textContent = opt.label;
       btn.onclick = () => {
         addUserMsg(opt.label);
@@ -450,9 +450,9 @@ function showTyping() {
   row.id = 'typingRow';
 
   const img = document.createElement('img');
-  img.src = MIRA_IMG;
+  img.src = Myra_IMG;
   img.className = 'bot-icon-mini';
-  img.alt = 'Dr. Mira';
+  img.alt = 'Dr. Myra';
 
   const dots = document.createElement('div');
   dots.className = 'chat-msg bot typing-dots';
@@ -577,7 +577,7 @@ function showEmergencyOverlay() {
     overlay.innerHTML = `
       <div style="font-size:3rem">🚨</div>
       <h2>EMERGENCY DETECTED</h2>
-      <p style="color:rgba(255,255,255,0.9);text-align:center;max-width:300px;font-size:0.95rem">Dr. Mira is activating emergency protocols. Please stay calm.</p>
+      <p style="color:rgba(255,255,255,0.9);text-align:center;max-width:300px;font-size:0.95rem">Dr. Myra is activating emergency protocols. Please stay calm.</p>
       <a href="tel:108" class="emergency-btn">📞 Call Ambulance 108 (FREE)</a>
       <button class="emergency-btn" onclick="handleHospitalFinder();document.getElementById('emergencyOverlay').remove();document.getElementById('chatWindow').classList.add('open')">🏥 Find Emergency Hospital</button>
       <button class="emergency-btn" onclick="showNotif('🆘 SOS Alert sent to your emergency contacts!')">🆘 Send SOS Alert</button>
@@ -857,9 +857,9 @@ document.addEventListener('DOMContentLoaded', function () {
   if (document.getElementById('hospitalsGrid')) initHospitals();
   if (document.getElementById('medListContainer')) initMedicines();
 
-  // Dr. Mira greeting on load
+  // Dr. Myra greeting on load
   setTimeout(() => {
-    addBotMsg("Hello! I'm Dr. Mira, your AI health assistant from Medi-Connect. 👩‍⚕️\nI'm here to help you with symptoms, doctors, medicines, and emergencies. How can I help you today?", [
+    addBotMsg("Hello! I'm Dr. Myra, your AI health assistant from MotherWish. 👩‍⚕️\nI'm here to help you with symptoms, doctors, medicines, and emergencies. How can I help you today?", [
       { label: "🩺 Check Symptoms", action: handleSymptomCheck },
       { label: "📅 Book Doctor", action: handleDoctorBooking },
       { label: "🏥 Find Hospital", action: handleHospitalFinder },
@@ -946,7 +946,7 @@ async function fetchMedicines() {
           salt: 'Composition info not provided',
           dr: m.doctor_name || 'Dr. Unknown',
           spec: 'General',
-          hosp: 'Medi-Connect Associated Hospital',
+          hosp: 'MotherWish Associated Hospital',
           start: new Date().toISOString().split('T')[0],
           end: 'Course end',
           duration: `${m.duration} Days`,
@@ -1194,7 +1194,7 @@ function registerServiceWorker() {
   window.addEventListener('appinstalled', () => {
     deferredPrompt = null;
     hideInstallButton();
-    showNotif('✅ Medi-Connect app installed successfully!');
+    showNotif('✅ MotherWish app installed successfully!');
   });
 }
 
@@ -1233,7 +1233,7 @@ async function installPWA() {
   deferredPrompt.prompt();
   const { outcome } = await deferredPrompt.userChoice;
   if (outcome === 'accepted') {
-    showNotif('🎉 Installing Medi-Connect app...');
+    showNotif('🎉 Installing MotherWish app...');
   }
   deferredPrompt = null;
   hideInstallButton();

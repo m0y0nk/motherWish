@@ -1,7 +1,7 @@
 import sqlite3
 import os
 
-DB_FILE = 'mediconnect.db'
+DB_FILE = 'MotherWish.db'
 
 def get_db_connection():
     conn = sqlite3.connect(DB_FILE)

@@ -2,11 +2,13 @@ from flask import Flask, request, jsonify, render_template, send_from_directory
 from flask_cors import CORS
 import sqlite3
 import os
+from dotenv import load_dotenv
+load_dotenv()
 import database
 import google.generativeai as genai
 
 # Configure Gemini
-genai.configure(api_key="AIzaSyCN-JUYD8LUT_DXo8exzBRh6BL3g8mi-vo")
+genai.configure(api_key=os.environ.get("GEMINI_API_KEY", ""))
 model_name = "gemini-2.0-flash"
 model = genai.GenerativeModel(model_name)
 
@@ -36,8 +38,8 @@ def chat():
         return jsonify({'error': 'No message provided'}), 400
         
     try:
-        # System prompt to keep it relevant to MediConnect
-        prompt = f"You are Dr. Mira, a friendly, caring, and professional AI medical assistant for MediConnect India. Keep responses helpful, concise, and caring. Use emojis occasionally. If the user asks for serious medical advice, remind them to consult a human doctor. User message: {user_message}"
+        # System prompt to keep it relevant to MotherWish
+        prompt = f"You are Dr. Myra, a friendly, caring, and professional AI medical assistant for MotherWish India. Keep responses helpful, concise, and caring. Use emojis occasionally. If the user asks for serious medical advice, remind them to consult a human doctor. User message: {user_message}"
         response = model.generate_content(prompt)
         return jsonify({'response': response.text})
     except Exception as e:

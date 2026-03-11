@@ -1,6 +1,6 @@
 {
-  "name": "Medi-Connect — India's Healthcare Platform",
-  "short_name": "Medi-Connect",
+  "name": "MotherWish — India's Healthcare Platform",
+  "short_name": "MotherWish",
   "description": "Book appointments, find doctors, access emergency services, blood banks, and more. India's most trusted digital healthcare platform.",
   "start_url": "./home.html",
   "scope": "./",
@@ -8,7 +8,11 @@
   "orientation": "any",
   "background_color": "#f0f4f8",
   "theme_color": "#2472d8",
-  "categories": ["health", "medical", "lifestyle"],
+  "categories": [
+    "health",
+    "medical",
+    "lifestyle"
+  ],
   "lang": "en-IN",
   "dir": "ltr",
   "icons": [
@@ -31,21 +35,36 @@
       "short_name": "Appointment",
       "description": "Book a doctor appointment",
       "url": "./appointment.html",
-      "icons": [{ "src": "icons/icon-192.svg", "sizes": "192x192" }]
+      "icons": [
+        {
+          "src": "icons/icon-192.svg",
+          "sizes": "192x192"
+        }
+      ]
     },
     {
       "name": "Find Doctors",
       "short_name": "Doctors",
       "description": "Browse doctors and hospitals",
       "url": "./categories.html",
-      "icons": [{ "src": "icons/icon-192.svg", "sizes": "192x192" }]
+      "icons": [
+        {
+          "src": "icons/icon-192.svg",
+          "sizes": "192x192"
+        }
+      ]
     },
     {
       "name": "Emergency",
       "short_name": "Emergency",
       "description": "Emergency services and blood bank",
       "url": "./home.html",
-      "icons": [{ "src": "icons/icon-192.svg", "sizes": "192x192" }]
+      "icons": [
+        {
+          "src": "icons/icon-192.svg",
+          "sizes": "192x192"
+        }
+      ]
     }
   ]
 }
