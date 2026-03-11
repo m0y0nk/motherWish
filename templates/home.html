@@ -138,7 +138,7 @@
                 <div style="margin-top:24px; text-align:center;">
                     <button class="btn btn-primary"
                         style="padding: 14px 28px; font-size: 1.05rem; width: 100%; max-width: 300px; background: #ff4444; border: none; font-weight: bold; border-radius: 30px;"
-                        onclick="showNotif('📞 Redirecting to Request Form...')">🩸 Request Blood Form</button>
+                        onclick="document.getElementById('bloodRequestModal').style.display='flex'">🩸 Request Blood Form</button>
                 </div>
             </div>
             <!-- Emergency -->
@@ -264,6 +264,80 @@
             </div>
         </div>
     </div>
+
+    <!-- BLOOD REQUEST MODAL -->
+    <div class="modal-overlay" id="bloodRequestModal" style="display:none" onclick="if(event.target===this)this.style.display='none'">
+        <div class="modal-box" style="max-width:480px;text-align:left;padding:36px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px">
+                <h2 style="font-size:1.4rem;font-weight:800;margin:0">🩸 Request Blood</h2>
+                <button onclick="document.getElementById('bloodRequestModal').style.display='none'" style="background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--text-light)">&times;</button>
+            </div>
+            <div id="bloodFormContent">
+                <div class="login-form" style="gap:14px;display:flex;flex-direction:column">
+                    <input type="text" id="brPatientName" placeholder="Patient Name" style="width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-size:0.95rem;background:var(--bg);color:var(--text)">
+                    <select id="brBloodGroup" style="width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-size:0.95rem;background:var(--bg);color:var(--text)">
+                        <option value="" disabled selected>Select Blood Group</option>
+                        <option>A+</option><option>A-</option>
+                        <option>B+</option><option>B-</option>
+                        <option>O+</option><option>O-</option>
+                        <option>AB+</option><option>AB-</option>
+                    </select>
+                    <input type="number" id="brUnits" placeholder="Units Required" min="1" max="10" style="width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-size:0.95rem;background:var(--bg);color:var(--text)">
+                    <input type="text" id="brHospital" placeholder="Hospital Name" style="width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-size:0.95rem;background:var(--bg);color:var(--text)">
+                    <input type="text" id="brLocation" placeholder="Location" style="width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-size:0.95rem;background:var(--bg);color:var(--text)">
+                    <input type="tel" id="brContact" placeholder="Contact Number" style="width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-size:0.95rem;background:var(--bg);color:var(--text)">
+                    <button class="btn btn-primary" style="width:100%;padding:14px;font-size:1rem;margin-top:8px;background:linear-gradient(135deg,#ff4444,#cc0000);border:none;font-weight:700;border-radius:12px" onclick="submitBloodRequest()">🩸 Request Blood</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    function submitBloodRequest() {
+        const name = document.getElementById('brPatientName').value.trim();
+        const group = document.getElementById('brBloodGroup').value;
+        const units = document.getElementById('brUnits').value;
+        const hospital = document.getElementById('brHospital').value.trim();
+        const location = document.getElementById('brLocation').value.trim();
+        const contact = document.getElementById('brContact').value.trim();
+        if (!name || !group || !units || !hospital || !location || !contact) {
+            showNotif('⚠️ Please fill in all fields.');
+            return;
+        }
+        document.getElementById('bloodFormContent').innerHTML = `
+            <div style="text-align:center;padding:40px 20px">
+                <div style="font-size:3.5rem;margin-bottom:16px">✅</div>
+                <h3 style="font-size:1.3rem;font-weight:800;margin-bottom:8px;color:var(--text)">Request Submitted!</h3>
+                <p style="color:var(--text-light);font-size:0.95rem;line-height:1.6;margin-bottom:8px">
+                    Your blood request for <strong>${units} unit(s) of ${group}</strong> has been forwarded to nearby blood banks.
+                </p>
+                <p style="color:var(--text-light);font-size:0.85rem">A representative will contact you at <strong>${contact}</strong> shortly.</p>
+                <button class="btn btn-primary" style="margin-top:20px;padding:12px 32px" onclick="closeBloodModal()">Done</button>
+            </div>
+        `;
+        showNotif('✅ Blood request submitted successfully!');
+    }
+    function closeBloodModal() {
+        document.getElementById('bloodRequestModal').style.display = 'none';
+        document.getElementById('bloodFormContent').innerHTML = `
+            <div class="login-form" style="gap:14px;display:flex;flex-direction:column">
+                <input type="text" id="brPatientName" placeholder="Patient Name" style="width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-size:0.95rem;background:var(--bg);color:var(--text)">
+                <select id="brBloodGroup" style="width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-size:0.95rem;background:var(--bg);color:var(--text)">
+                    <option value="" disabled selected>Select Blood Group</option>
+                    <option>A+</option><option>A-</option>
+                    <option>B+</option><option>B-</option>
+                    <option>O+</option><option>O-</option>
+                    <option>AB+</option><option>AB-</option>
+                </select>
+                <input type="number" id="brUnits" placeholder="Units Required" min="1" max="10" style="width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-size:0.95rem;background:var(--bg);color:var(--text)">
+                <input type="text" id="brHospital" placeholder="Hospital Name" style="width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-size:0.95rem;background:var(--bg);color:var(--text)">
+                <input type="text" id="brLocation" placeholder="Location" style="width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-size:0.95rem;background:var(--bg);color:var(--text)">
+                <input type="tel" id="brContact" placeholder="Contact Number" style="width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-size:0.95rem;background:var(--bg);color:var(--text)">
+                <button class="btn btn-primary" style="width:100%;padding:14px;font-size:1rem;margin-top:8px;background:linear-gradient(135deg,#ff4444,#cc0000);border:none;font-weight:700;border-radius:12px" onclick="submitBloodRequest()">🩸 Request Blood</button>
+            </div>
+        `;
+    }
+    </script>
 
     <!-- NOTIFICATION -->
     <div class="notif" id="notif"></div>
