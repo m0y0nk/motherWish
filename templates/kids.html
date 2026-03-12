@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids Section — MotherWish</title>
+    <meta name="description"
+        content="Emergency pediatric help for children — find nearby child specialists, emergency hospitals, and call an ambulance instantly.">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- NAV -->
+    <nav class="navbar">
+        <a href="home.html" class="logo">
+            <div class="logo-icon"><svg viewBox="0 0 24 24">
+                    <rect x="10" y="7" width="4" height="10" rx="1" />
+                    <rect x="7" y="10" width="10" height="4" rx="1" />
+                </svg></div>
+            <span class="logo-text">MotherWish</span>
+        </a>
+        <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+        <div class="nav-links" id="navLinks">
+            <a href="home.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="insurance.html">Insurance</a>
+            <a href="categories.html">Categories</a>
+            <a href="selfcare.html">Self Care</a>
+            <a href="appointment.html">Book Appointment</a>
+            <a href="medicines.html">My Medicines</a>
+            <a href="help.html">Help</a>
+        </div>
+        <div class="nav-right">
+            <div class="search-bar">
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zM9.5 14A4.5 4.5 0 1114 9.5 4.494 4.494 0 019.5 14z" />
+                </svg>
+                <input type="text" placeholder="Search doctors & hospitals...">
+            </div>
+            <button class="btn btn-primary" id="authBtn"
+                onclick="document.getElementById('loginModal').style.display='flex'">Login / Sign Up</button>
+            <div class="dark-mode-toggle off" id="darkModeToggle" onclick="toggleDarkMode()">
+                <div class="toggle-track">
+                    <div class="toggle-thumb"></div>
+                </div>
+                <span class="toggle-label-light">☀️</span><span class="toggle-label-dark">🌙</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO BANNER -->
+    <section class="hero" style="text-align:center; position:relative; overflow:hidden; margin-bottom:-1px;">
+        <div
+            style="position:absolute;inset:0;background:radial-gradient(circle at 20% 80%, rgba(255,255,255,0.06) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(0,166,81,0.08) 0%, transparent 40%);">
+        </div>
+        <div style="max-width: 740px; margin: 0 auto; position:relative; z-index:1;">
+            <div
+                style="display:inline-flex;align-items:center;justify-content:center;width:80px;height:80px;background:rgba(255,255,255,0.15);border-radius:50%;margin-bottom:20px;font-size:2.8rem;backdrop-filter:blur(8px);border:2px solid rgba(255,255,255,0.2)">
+                👶</div>
+            <h1 style="font-size: 2.8rem; margin-bottom: 16px; font-weight: 900;">Kids Emergency Help</h1>
+            <p
+                style="font-size: 1.15rem; opacity: 0.92; margin-bottom: 36px; line-height: 1.7; max-width:600px; margin-left:auto; margin-right:auto;">
+                Quick help for your little one — find pediatric specialists, child emergency hospitals, or call an
+                ambulance instantly.
+            </p>
+            <div class="hero-btns" style="justify-content: center; gap: 12px; flex-wrap: wrap;">
+                <a href="#kidsDoctors" class="btn-hero btn-hero-white" style="font-weight:700">👨‍⚕️ Pediatric
+                    Doctors</a>
+                <a href="#kidsHospitals" class="btn-hero btn-hero-outline"
+                    style="border-color:#fff;color:#fff;font-weight:700">🏥 Emergency Hospitals</a>
+                <a href="tel:108" class="btn-hero btn-hero-white"
+                    style="background:#e53935;color:#fff;border-color:#e53935;font-weight:700;box-shadow:0 4px 15px rgba(229,57,53,0.4)">🚑
+                    Call Ambulance</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMMON EMERGENCIES QUICK TIPS -->
+    <section
+        style="background: linear-gradient(180deg, #e0f2f1 0%, #f5f5f5 100%) !important; padding: 48px 20px; margin-top:-2px; padding-top:50px;">
+        <div class="section-title">⚡ Common Child Emergencies — What To Do</div>
+        <div class="section-sub">Stay calm. Follow these quick steps while help is on the way.</div>
+        <div
+            style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;max-width:1000px;margin:24px auto 0">
+            <div style="background:#fff;border-radius:16px;padding:24px 20px;text-align:center;box-shadow:0 2px 12px rgba(13,148,136,0.08);border:1px solid rgba(13,148,136,0.08);transition:transform 0.2s,box-shadow 0.2s"
+                onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 24px rgba(13,148,136,0.12)'"
+                onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(13,148,136,0.08)'">
+                <div
+                    style="display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;background:linear-gradient(135deg,#e0f7fa,#b2ebf2);border-radius:14px;font-size:1.6rem;margin-bottom:12px">
+                    🌡️</div>
+                <h4 style="font-weight:700;margin-bottom:6px;font-size:0.95rem">High Fever</h4>
+                <p style="font-size:0.82rem;color:var(--text-light);line-height:1.5">Sponge with lukewarm water. Give
+                    age-appropriate paracetamol. See a doctor if 103°F+.</p>
+            </div>
+            <div style="background:#fff;border-radius:16px;padding:24px 20px;text-align:center;box-shadow:0 2px 12px rgba(13,148,136,0.08);border:1px solid rgba(13,148,136,0.08);transition:transform 0.2s,box-shadow 0.2s"
+                onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 24px rgba(13,148,136,0.12)'"
+                onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(13,148,136,0.08)'">
+                <div
+                    style="display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;background:linear-gradient(135deg,#fce4ec,#f8bbd0);border-radius:14px;font-size:1.6rem;margin-bottom:12px">
+                    🫁</div>
+                <h4 style="font-weight:700;margin-bottom:6px;font-size:0.95rem">Choking</h4>
+                <p style="font-size:0.82rem;color:var(--text-light);line-height:1.5">For infants: 5 back blows + 5 chest
+                    thrusts. For older kids: Heimlich maneuver. Call 108 immediately.</p>
+            </div>
+            <div style="background:#fff;border-radius:16px;padding:24px 20px;text-align:center;box-shadow:0 2px 12px rgba(13,148,136,0.08);border:1px solid rgba(13,148,136,0.08);transition:transform 0.2s,box-shadow 0.2s"
+                onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 24px rgba(13,148,136,0.12)'"
+                onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(13,148,136,0.08)'">
+                <div
+                    style="display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;background:linear-gradient(135deg,#fff3e0,#ffe0b2);border-radius:14px;font-size:1.6rem;margin-bottom:12px">
+                    💊</div>
+                <h4 style="font-weight:700;margin-bottom:6px;font-size:0.95rem">Swallowed Something</h4>
+                <p style="font-size:0.82rem;color:var(--text-light);line-height:1.5">Don't induce vomiting. Note what
+                    was swallowed. Rush to nearest hospital or call poison helpline.</p>
+            </div>
+            <div style="background:#fff;border-radius:16px;padding:24px 20px;text-align:center;box-shadow:0 2px 12px rgba(13,148,136,0.08);border:1px solid rgba(13,148,136,0.08);transition:transform 0.2s,box-shadow 0.2s"
+                onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 24px rgba(13,148,136,0.12)'"
+                onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(13,148,136,0.08)'">
+                <div
+                    style="display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;background:linear-gradient(135deg,#e8eaf6,#c5cae9);border-radius:14px;font-size:1.6rem;margin-bottom:12px">
+                    🤕</div>
+                <h4 style="font-weight:700;margin-bottom:6px;font-size:0.95rem">Head Injury</h4>
+                <p style="font-size:0.82rem;color:var(--text-light);line-height:1.5">Keep child still. Apply ice pack.
+                    If vomiting or unconscious, call 108 and rush to ER.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PEDIATRIC DOCTORS -->
+    <section id="kidsDoctors">
+        <div class="section-title">👨‍⚕️ Pediatric Doctors</div>
+        <div class="section-sub">Top-rated child specialists near you — book instantly</div>
+        <div class="doctors-grid" id="kidsDoctorsGrid"></div>
+    </section>
+
+    <!-- CHILD EMERGENCY HOSPITALS -->
+    <section id="kidsHospitals" style="background: var(--bg)">
+        <div class="section-title">🏥 Child Emergency Hospitals</div>
+        <div class="section-sub">Hospitals with NICU/PICU facilities for children</div>
+        <div class="hospitals-grid" id="kidsHospitalsGrid"></div>
+    </section>
+
+    <!-- CALL AMBULANCE -->
+    <section
+        style="background: linear-gradient(135deg, #0d47a1 0%, #1565c0 50%, #0d9488 100%); color: white; padding: 60px 20px; text-align: center; position:relative; overflow:hidden;">
+        <div
+            style="position:absolute;inset:0;background:radial-gradient(circle at 50% 0%, rgba(255,255,255,0.06) 0%, transparent 50%)">
+        </div>
+        <div style="max-width: 600px; margin: 0 auto; position:relative; z-index:1;">
+            <div
+                style="display:inline-flex;align-items:center;justify-content:center;width:72px;height:72px;background:rgba(255,255,255,0.12);border-radius:50%;margin-bottom:16px;font-size:2.5rem;backdrop-filter:blur(6px);border:2px solid rgba(255,255,255,0.15)">
+                🚑</div>
+            <h2 style="font-size: 2rem; font-weight: 900; margin-bottom: 12px;">Need an Ambulance?</h2>
+            <p style="opacity: 0.9; margin-bottom: 28px; font-size: 1.05rem;">One tap to call a FREE government
+                ambulance. Every second counts.</p>
+            <a href="tel:108"
+                style="display:inline-block;padding:18px 48px;background:#fff;color:#e53935;border-radius:40px;font-size:1.2rem;font-weight:800;text-decoration:none;box-shadow:0 4px 20px rgba(0,0,0,0.15);transition:transform 0.2s,box-shadow 0.2s"
+                onmouseover="this.style.transform='scale(1.05)';this.style.boxShadow='0 8px 30px rgba(0,0,0,0.25)'"
+                onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.15)'">
+                📞 CALL 108 — FREE AMBULANCE
+            </a>
+            <div style="margin-top:32px">
+                <h4 style="font-size:0.95rem;font-weight:700;margin-bottom:16px">🚑 Nearby Ambulances</h4>
+                <div id="kidsAmbulanceList" style="text-align:left;max-width:500px;margin:0 auto"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo" style="margin-bottom:12px">
+                    <div class="logo-icon"><svg viewBox="0 0 24 24">
+                            <rect x="10" y="7" width="4" height="10" rx="1" />
+                            <rect x="7" y="10" width="10" height="4" rx="1" />
+                        </svg></div>
+                    <span class="logo-text" style="-webkit-text-fill-color:white">MotherWish</span>
+                </div>
+                <p>India's most trusted digital healthcare platform connecting patients, doctors, hospitals, and
+                    emergency services seamlessly.</p>
+            </div>
+            <div class="footer-col">
+                <h5>Services</h5><a href="appointment.html">Book Appointment</a><a href="home.html">Emergency
+                    Ambulance</a><a href="home.html">Blood Bank</a><a href="selfcare.html">Lab Reports</a>
+            </div>
+            <div class="footer-col">
+                <h5>Hospitals</h5><a href="categories.html">Apollo Hospitals</a><a href="categories.html">Fortis
+                    Healthcare</a><a href="categories.html">Narayana Health</a><a href="categories.html">Max
+                    Healthcare</a>
+            </div>
+            <div class="footer-col">
+                <h5>Support</h5><a href="help.html">Help Center</a><a href="help.html">Contact Us</a><a href="#">Privacy
+                    Policy</a><a href="#">Terms of Service</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 MotherWish. All rights reserved. | Made with ❤️ in India</p>
+            <p>🏥 Registered under Ministry of Health & Family Welfare, Govt. of India</p>
+        </div>
+    </footer>
+
+    <!-- CHAT BOT -->
+    <button class="chatbot-btn" onclick="toggleChat()" title="Chat with Dr. Myra" id="MyraChatBtn">
+        <img src="{{ url_for('static', filename='icons/dr-Myra.png') }}" alt="Dr. Myra">
+    </button>
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header">
+            <div class="chat-header-image-wrap">
+                <img src="{{ url_for('static', filename='icons/dr-Myra.png') }}" alt="Dr. Myra" class="chat-avatar">
+                <span class="chat-avatar-online"></span>
+            </div>
+            <div class="chat-header-info">
+                <div class="chat-title">Dr. Myra</div>
+                <div class="chat-subtitle">🟢 Online · 24×7 AI Medical Assistant</div>
+            </div>
+            <button class="chat-close" onclick="toggleChat()">✕</button>
+        </div>
+        <div class="Myra-intro-banner">
+            Hello! I'm Dr. Myra – Your 24×7 AI Medical Assistant. 💙
+        </div>
+        <div class="chat-messages" id="chatMessages">
+        </div>
+        <div class="chat-quick">
+            <button class="quick-btn" onclick="quickChat('Check Symptoms')">🩺 Check Symptoms</button>
+            <button class="quick-btn" onclick="quickChat('Book Doctor')">📅 Book Doctor</button>
+            <button class="quick-btn" onclick="quickChat('Find Hospital')">🏥 Find Hospital</button>
+            <button class="quick-btn" onclick="quickChat('Order Medicine')">💊 Medicine</button>
+            <button class="quick-btn" onclick="quickChat('Emergency')">🚨 Emergency</button>
+        </div>
+        <div class="chat-input">
+            <button class="voice-btn" id="voiceBtn" onclick="startVoiceInput()"
+                title="Voice chat with Dr. Myra">🎤</button>
+            <input type="text" placeholder="Ask Dr. Myra anything..." id="chatIn"
+                onkeypress="if(event.key==='Enter')sendChat()">
+            <button class="chat-send" onclick="sendChat()">Send</button>
+        </div>
+    </div>
+
+    <!-- LOGIN MODAL -->
+    <div class="modal-overlay" id="loginModal" style="display:none"
+        onclick="if(event.target===this)this.style.display='none'">
+        <div class="modal-box">
+            <h2 style="text-align:center;margin-bottom:20px">Welcome to MotherWish</h2>
+            <div class="auth-tabs">
+                <button class="auth-tab active" id="loginTabBtn" onclick="switchAuthTab('login')">Login</button>
+                <button class="auth-tab" id="signupTabBtn" onclick="switchAuthTab('signup')">Sign Up</button>
+            </div>
+            <div id="loginForm">
+                <div class="login-form">
+                    <input type="text" placeholder="Mobile Number" id="loginEmail">
+                    <input type="password" placeholder="Password" id="loginPassword">
+                    <button class="btn btn-primary" style="width:100%;padding:12px" onclick="doLogin()">Login</button>
+                </div>
+            </div>
+            <div id="signupForm" style="display:none">
+                <div class="login-form">
+                    <input type="text" placeholder="Full Name" id="signupName">
+                    <input type="text" placeholder="Mobile Number" id="signupMobile">
+                    <input type="password" placeholder="Password" id="signupPassword">
+                    <input type="password" placeholder="Confirm Password" id="signupConfirm">
+                    <button class="btn btn-secondary" style="width:100%;padding:12px" onclick="doSignup()">Create
+                        Account</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NOTIFICATION -->
+    <div class="notif" id="notif"></div>
+
+    <!-- STICKY SOS BAR -->
+    <!-- <div id="kidsSosBar" style="position:fixed;bottom:0;left:0;right:0;background:rgba(15,23,42,0.92);padding:12px 20px;display:flex;justify-content:center;gap:10px;z-index:9999;box-shadow:0 -2px 12px rgba(0,0,0,0.2);flex-wrap:wrap;backdrop-filter:blur(16px);border-top:1px solid rgba(255,255,255,0.08)">
+        <a href="tel:108" style="padding:10px 22px;background:#e53935;color:#fff;border-radius:24px;font-weight:800;text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px;box-shadow:0 2px 8px rgba(229,57,53,0.4);transition:transform 0.2s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">📞 Call 108</a>
+        <a href="#kidsHospitals" style="padding:10px 22px;background:rgba(255,255,255,0.1);color:#fff;border:1.5px solid rgba(255,255,255,0.2);border-radius:24px;font-weight:700;text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px;transition:background 0.2s" onmouseover="this.style.background='rgba(255,255,255,0.18)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">🏥 Nearest Hospital</a>
+        <button onclick="showNotif('🆘 SOS Alert sent to your emergency contacts!')" style="padding:10px 22px;background:#ff6f00;color:#fff;border:none;border-radius:24px;font-weight:800;font-size:0.85rem;cursor:pointer;display:flex;align-items:center;gap:6px;box-shadow:0 2px 8px rgba(255,111,0,0.35);transition:transform 0.2s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">🆘 SOS Alert</button>
+    </div> -->
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script>
+        // Kids page specific data
+        const kidsDoctors = [
+            { name: 'Dr. Vikram Singh', spec: 'Pediatrics', dept: 'Pediatrics', hosp: 'Max Healthcare', exp: 12, deg: 'MD Pediatrics', fees: 700, rating: 4.6, color: '#FF6B35' },
+            { name: 'Dr. Ananya Desai', spec: 'Pediatric Surgery', dept: 'Pediatric Surgery', hosp: 'Apollo Hospitals', exp: 15, deg: 'MS, MCh Pediatric Surgery', fees: 1200, rating: 4.9, color: '#E91E63' },
+            { name: 'Dr. Ravi Mohan', spec: 'Child Neurology', dept: 'Pediatric Neurology', hosp: 'NIMHANS', exp: 18, deg: 'MD, DM Pediatric Neurology', fees: 1500, rating: 4.8, color: '#9C27B0' },
+            { name: 'Dr. Sneha Kulkarni', spec: 'Neonatology', dept: 'NICU', hosp: 'Narayana Health', exp: 10, deg: 'MD Pediatrics, DM Neonatology', fees: 900, rating: 4.7, color: '#00BCD4' },
+            { name: 'Dr. Arjun Kapoor', spec: 'Pediatric Orthopedics', dept: 'Pediatric Ortho', hosp: 'Fortis Hospital', exp: 14, deg: 'MS Ortho, Fellowship Pediatric', fees: 1000, rating: 4.5, color: '#4CAF50' },
+            { name: 'Dr. Priya Nambiar', spec: 'Pediatric Pulmonology', dept: 'Child Lung Care', hosp: 'Manipal Hospital', exp: 11, deg: 'MD Pediatrics, DM Pulmonology', fees: 850, rating: 4.6, color: '#2196F3' }
+        ];
+
+        const kidsHospitals = [
+            { name: 'Apollo Children\'s Hospital', loc: 'Bannerghatta Rd, Bangalore', rating: 4.9, beds: 120, icu: 35, facilities: ['PICU', 'NICU', 'Pediatric ER', 'Blood Bank', 'Ambulance', 'Cashless'], insurance: 'Star Health, HDFC Ergo, Bajaj' },
+            { name: 'Rainbow Children\'s Hospital', loc: 'Marathahalli, Bangalore', rating: 4.8, beds: 200, icu: 50, facilities: ['PICU', 'NICU', 'Pediatric Surgery', 'Emergency', 'Cashless'], insurance: 'All major insurers' },
+            { name: 'Fortis Children\'s Ward', loc: 'Cunningham Rd, Delhi', rating: 4.7, beds: 80, icu: 25, facilities: ['PICU', 'NICU', 'Pediatric ER', 'Ambulance', 'Cashless'], insurance: 'HDFC Ergo, United India, Reliance' },
+            { name: 'Narayana Pediatric Centre', loc: 'Hosur Rd, Bangalore', rating: 4.7, beds: 150, icu: 40, facilities: ['NICU', 'Pediatric Cardiology', 'Emergency', 'Blood Bank', 'Cashless'], insurance: 'Star Health, New India, Bajaj' }
+        ];
+
+        // Render kids doctors
+        function initKidsDoctors() {
+            const grid = document.getElementById('kidsDoctorsGrid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            kidsDoctors.forEach(d => {
+                const initials = d.name.split(' ').map(n => n[0]).join('').substring(0, 2);
+                grid.innerHTML += `<div class="doctor-card">
+                <div class="doc-header">
+                    <div class="doc-avatar" style="background:${d.color}">${initials}<div class="live-dot"></div></div>
+                    <div><div class="doc-name">${d.name}</div><div class="doc-spec">${d.spec}</div><div class="doc-hospital">🏥 ${d.hosp}</div></div>
+                </div>
+                <div class="doc-details"><div class="doc-detail-item">Experience: <span>${d.exp} yrs</span></div><div class="doc-detail-item">Degree: <span>${d.deg}</span></div></div>
+                <div class="doc-fees">₹${d.fees} <span style="font-size:0.75rem;font-weight:400;color:var(--text-light)">per consultation</span></div>
+                <div class="stars">${'★'.repeat(Math.floor(d.rating))}${'☆'.repeat(5 - Math.floor(d.rating))} <span style="font-size:0.78rem;color:var(--text-light);font-weight:400">${d.rating}</span></div>
+                <div class="doc-actions"><button class="btn-book" onclick="bookDoc('${d.name}')">📅 Book Now</button><button class="btn-chat" onclick="chatDoc('${d.name}')">💬 Chat</button></div>
+            </div>`;
+            });
+        }
+
+        // Render kids hospitals
+        function initKidsHospitals() {
+            const grid = document.getElementById('kidsHospitalsGrid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            kidsHospitals.forEach(h => {
+                const facs = h.facilities.map(f => `<span class="facility-tag">${f}</span>`).join('');
+                grid.innerHTML += `<div class="hospital-card">
+                <div class="hosp-top"><div><div class="hosp-name">🏥 ${h.name}</div><div class="hosp-location">📍 ${h.loc}</div></div><div class="hosp-rating">⭐ ${h.rating}</div></div>
+                <div class="bed-info"><div class="bed-stat"><div class="bed-num green">${h.beds}</div><div class="bed-lbl">Available Beds</div></div><div class="bed-stat"><div class="bed-num blue">${h.icu}</div><div class="bed-lbl">PICU/NICU Beds</div></div></div>
+                <div class="facilities">${facs}</div>
+                <div class="insurance-row">🛡️ Insurance: ${h.insurance}</div>
+                <div class="hosp-actions"><button class="btn btn-primary" style="flex:1" onclick="showNotif('Opening ${h.name} profile...')">View Details</button><button class="btn btn-secondary" style="flex:1" onclick="showNotif('Calling ${h.name}...')">📞 Call</button></div>
+            </div>`;
+            });
+        }
+
+        // Render ambulances
+        function initKidsAmbulances() {
+            const list = document.getElementById('kidsAmbulanceList');
+            if (!list) return;
+            const kidsAmbulances = [
+                { name: 'Apollo Pediatric Ambulance', info: 'Neonatal Transport · KA-01-AB-1234', status: 'available' },
+                { name: 'Rainbow Emergency Unit', info: 'Pediatric Life Support · KA-03-CD-5678', status: 'available' },
+                { name: 'Narayana Pediatric Response', info: 'Advanced Life Support · KA-05-EF-9012', status: 'busy' }
+            ];
+            list.innerHTML = '';
+            kidsAmbulances.forEach(a => {
+                list.innerHTML += `<div style="display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.1);border-radius:12px;padding:12px 16px;margin-bottom:8px">
+                <div><div style="font-weight:700;font-size:0.9rem">🚑 ${a.name}</div><div style="font-size:0.78rem;opacity:0.8">${a.info}</div></div>
+                <span style="padding:4px 12px;border-radius:20px;font-size:0.75rem;font-weight:700;background:${a.status === 'available' ? 'rgba(76,175,80,0.3)' : 'rgba(255,152,0,0.3)'};color:#fff">${a.status === 'available' ? '✅ Available' : '🔴 On Duty'}</span>
+            </div>`;
+            });
+        }
+
+        // Add padding at the bottom for the sticky SOS bar
+        // document.body.style.paddingBottom = '70px'; // disabled — SOS bar commented out
+
+        // Init on load
+        document.addEventListener('DOMContentLoaded', () => {
+            initKidsDoctors();
+            initKidsHospitals();
+            initKidsAmbulances();
+            initDarkMode();
+            setActiveNav();
+            initAuth();
+            initSearch();
+        });
+    </script>
+</body>
+
+</html>
