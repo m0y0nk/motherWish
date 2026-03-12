@@ -1,7 +1,7 @@
 import sqlite3
 import os
 
-DB_FILE = 'MotherWish.db'
+DB_FILE = 'Motherish.db'
 
 def get_db_connection():
     conn = sqlite3.connect(DB_FILE)

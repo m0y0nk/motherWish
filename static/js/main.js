@@ -1,4 +1,4 @@
-/* ============= MotherWish SHARED JAVASCRIPT ============= */
+/* ============= Motherish SHARED JAVASCRIPT ============= */
 
 // ===== DATA =====
 const bloodData = [
@@ -57,7 +57,7 @@ const chatResponses = {
   'blood availability': 'Current blood availability:\n🟢 A+: 24 units\n🟢 O+: 42 units\n🟡 A-: 8 units (Low)\n🔴 B-: 3 units (Critical)\n\nFor emergency blood requests, call 9343335183 🩸',
   'find doctors': 'We have 20+ verified doctors across all specializations:\n👨‍⚕️ Cardiology, Neurology, Orthopedics\n👩‍⚕️ Gynecology, Pediatrics, ENT\n🔬 Oncology, Nephrology, and more!\n\nUse filters on the Categories page 🔍',
   'insurance help': 'We support major insurance providers:\n✅ Star Health Insurance\n✅ HDFC Ergo\n✅ Bajaj Allianz\n✅ New India Assurance\n✅ United India Insurance\n\nCashless treatment at 500+ hospitals! 🛡️',
-  'emergency': '🚨 EMERGENCY CONTACTS:\n📞 108 — Free Government Ambulance\n📞 9343335183 — MotherWish Helpline\n🏥 Apollo: 080-22941111\n🏥 Fortis: 011-42776222\n\nDo you need an ambulance right now? 🚑'
+  'emergency': '🚨 EMERGENCY CONTACTS:\n📞 108 — Free Government Ambulance\n📞 9343335183 — Motherish Helpline\n🏥 Apollo: 080-22941111\n🏥 Fortis: 011-42776222\n\nDo you need an ambulance right now? 🚑'
 };
 
 let myMedicines = [];
@@ -144,7 +144,7 @@ async function doSignup() {
     if (res.ok) {
       localStorage.setItem('mediUser', JSON.stringify(data.user));
       document.getElementById('loginModal').style.display = 'none';
-      showNotif('✅ Account created! Welcome to MotherWish.');
+      showNotif('✅ Account created! Welcome to Motherish.');
       initAuth();
       if (typeof initMedicines === 'function') initMedicines();
     } else {
@@ -859,7 +859,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Dr. Myra greeting on load
   setTimeout(() => {
-    addBotMsg("Hello! I'm Dr. Myra, your AI health assistant from MotherWish. 👩‍⚕️\nI'm here to help you with symptoms, doctors, medicines, and emergencies. How can I help you today?", [
+    addBotMsg("Hello! I'm Dr. Myra, your AI health assistant from Motherish. 👩‍⚕️\nI'm here to help you with symptoms, doctors, medicines, and emergencies. How can I help you today?", [
       { label: "🩺 Check Symptoms", action: handleSymptomCheck },
       { label: "📅 Book Doctor", action: handleDoctorBooking },
       { label: "🏥 Find Hospital", action: handleHospitalFinder },
@@ -946,7 +946,7 @@ async function fetchMedicines() {
           salt: 'Composition info not provided',
           dr: m.doctor_name || 'Dr. Unknown',
           spec: 'General',
-          hosp: 'MotherWish Associated Hospital',
+          hosp: 'Motherish Associated Hospital',
           start: new Date().toISOString().split('T')[0],
           end: 'Course end',
           duration: `${m.duration} Days`,
@@ -1194,7 +1194,7 @@ function registerServiceWorker() {
   window.addEventListener('appinstalled', () => {
     deferredPrompt = null;
     hideInstallButton();
-    showNotif('✅ MotherWish app installed successfully!');
+    showNotif('✅ Motherish app installed successfully!');
   });
 }
 
@@ -1233,7 +1233,7 @@ async function installPWA() {
   deferredPrompt.prompt();
   const { outcome } = await deferredPrompt.userChoice;
   if (outcome === 'accepted') {
-    showNotif('🎉 Installing MotherWish app...');
+    showNotif('🎉 Installing Motherish app...');
   }
   deferredPrompt = null;
   hideInstallButton();

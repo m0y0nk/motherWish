@@ -4,11 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Senior Care — Home Nursing | MotherWish</title>
-    <meta name="description" content="Book professional home nursing services for elderly care. Choose from trusted hospitals, book a nurse, and get care delivered to your doorstep.">
+    <title>Senior Care — Home Nursing | Motherish</title>
+    <meta name="description"
+        content="Book professional home nursing services for elderly care. Choose from trusted hospitals, book a nurse, and get care delivered to your doorstep.">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -19,7 +21,7 @@
                     <rect x="10" y="7" width="4" height="10" rx="1" />
                     <rect x="7" y="10" width="10" height="4" rx="1" />
                 </svg></div>
-            <span class="logo-text">MotherWish</span>
+            <span class="logo-text">Motherish</span>
         </a>
         <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
         <div class="nav-links" id="navLinks">
@@ -35,11 +37,13 @@
         <div class="nav-right">
             <div class="search-bar">
                 <svg viewBox="0 0 24 24">
-                    <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zM9.5 14A4.5 4.5 0 1114 9.5 4.494 4.494 0 019.5 14z" />
+                    <path
+                        d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zM9.5 14A4.5 4.5 0 1114 9.5 4.494 4.494 0 019.5 14z" />
                 </svg>
                 <input type="text" placeholder="Search doctors & hospitals...">
             </div>
-            <button class="btn btn-primary" id="authBtn" onclick="document.getElementById('loginModal').style.display='flex'">Login / Sign Up</button>
+            <button class="btn btn-primary" id="authBtn"
+                onclick="document.getElementById('loginModal').style.display='flex'">Login / Sign Up</button>
             <div class="dark-mode-toggle off" id="darkModeToggle" onclick="toggleDarkMode()">
                 <div class="toggle-track">
                     <div class="toggle-thumb"></div>
@@ -51,44 +55,70 @@
 
     <!-- HERO BANNER -->
     <section class="hero" style="text-align:center; position:relative; overflow:hidden; margin-bottom:-1px;">
-        <div style="position:absolute;inset:0;background:radial-gradient(circle at 20% 80%, rgba(255,255,255,0.06) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(99,102,241,0.08) 0%, transparent 40%);"></div>
+        <div
+            style="position:absolute;inset:0;background:radial-gradient(circle at 20% 80%, rgba(255,255,255,0.06) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(99,102,241,0.08) 0%, transparent 40%);">
+        </div>
         <div style="max-width: 740px; margin: 0 auto; position:relative; z-index:1;">
-            <div style="display:inline-flex;align-items:center;justify-content:center;width:80px;height:80px;background:rgba(255,255,255,0.15);border-radius:50%;margin-bottom:20px;font-size:2.8rem;backdrop-filter:blur(8px);border:2px solid rgba(255,255,255,0.2)">🏠</div>
+            <div
+                style="display:inline-flex;align-items:center;justify-content:center;width:80px;height:80px;background:rgba(255,255,255,0.15);border-radius:50%;margin-bottom:20px;font-size:2.8rem;backdrop-filter:blur(8px);border:2px solid rgba(255,255,255,0.2)">
+                🏠</div>
             <h1 style="font-size: 2.8rem; margin-bottom: 16px; font-weight: 900;">Senior Care — Home Nursing</h1>
-            <p style="font-size: 1.15rem; opacity: 0.92; margin-bottom: 36px; line-height: 1.7; max-width:600px; margin-left:auto; margin-right:auto;">
-                Professional home nursing for your loved ones. Choose a trusted hospital, book a nurse, and get quality care delivered to your doorstep.
+            <p
+                style="font-size: 1.15rem; opacity: 0.92; margin-bottom: 36px; line-height: 1.7; max-width:600px; margin-left:auto; margin-right:auto;">
+                Professional home nursing for your loved ones. Choose a trusted hospital, book a nurse, and get quality
+                care delivered to your doorstep.
             </p>
             <div class="hero-btns" style="justify-content: center; gap: 12px; flex-wrap: wrap;">
-                <a href="#nursingHospitals" class="btn-hero btn-hero-white" style="font-weight:700">🏥 View Hospitals</a>
-                <a href="#howItWorks" class="btn-hero btn-hero-outline" style="border-color:#fff;color:#fff;font-weight:700">📋 How It Works</a>
+                <a href="#nursingHospitals" class="btn-hero btn-hero-white" style="font-weight:700">🏥 View
+                    Hospitals</a>
+                <a href="#howItWorks" class="btn-hero btn-hero-outline"
+                    style="border-color:#fff;color:#fff;font-weight:700">📋 How It Works</a>
             </div>
         </div>
     </section>
 
     <!-- HOW IT WORKS -->
-    <section id="howItWorks" style="background: linear-gradient(180deg, #e0f2f1 0%, #f5f5f5 100%) !important; padding: 48px 20px; margin-top:-2px; padding-top:50px;">
+    <section id="howItWorks"
+        style="background: linear-gradient(180deg, #e0f2f1 0%, #f5f5f5 100%) !important; padding: 48px 20px; margin-top:-2px; padding-top:50px;">
         <div class="section-title">📋 How It Works</div>
         <div class="section-sub">Simple 4-step process to get a nurse at home</div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;max-width:900px;margin:32px auto 0">
-            <div style="text-align:center;padding:28px 20px;background:#fff;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.04);position:relative">
-                <div style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;background:linear-gradient(135deg,#0d9488,#0891b2);border-radius:50%;color:#fff;font-weight:900;font-size:1.2rem;margin-bottom:12px">1</div>
+        <div
+            style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;max-width:900px;margin:32px auto 0">
+            <div
+                style="text-align:center;padding:28px 20px;background:#fff;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.04);position:relative">
+                <div
+                    style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;background:linear-gradient(135deg,#0d9488,#0891b2);border-radius:50%;color:#fff;font-weight:900;font-size:1.2rem;margin-bottom:12px">
+                    1</div>
                 <h4 style="font-weight:700;margin-bottom:6px;font-size:0.95rem">Choose Hospital</h4>
-                <p style="font-size:0.82rem;color:var(--text-light);line-height:1.5">Browse hospitals offering home nursing services</p>
+                <p style="font-size:0.82rem;color:var(--text-light);line-height:1.5">Browse hospitals offering home
+                    nursing services</p>
             </div>
-            <div style="text-align:center;padding:28px 20px;background:#fff;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.04)">
-                <div style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;background:linear-gradient(135deg,#2563eb,#3b82f6);border-radius:50%;color:#fff;font-weight:900;font-size:1.2rem;margin-bottom:12px">2</div>
+            <div
+                style="text-align:center;padding:28px 20px;background:#fff;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.04)">
+                <div
+                    style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;background:linear-gradient(135deg,#2563eb,#3b82f6);border-radius:50%;color:#fff;font-weight:900;font-size:1.2rem;margin-bottom:12px">
+                    2</div>
                 <h4 style="font-weight:700;margin-bottom:6px;font-size:0.95rem">Fill Details</h4>
-                <p style="font-size:0.82rem;color:var(--text-light);line-height:1.5">Enter patient info, care type, and preferred timing</p>
+                <p style="font-size:0.82rem;color:var(--text-light);line-height:1.5">Enter patient info, care type, and
+                    preferred timing</p>
             </div>
-            <div style="text-align:center;padding:28px 20px;background:#fff;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.04)">
-                <div style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;background:linear-gradient(135deg,#7c3aed,#8b5cf6);border-radius:50%;color:#fff;font-weight:900;font-size:1.2rem;margin-bottom:12px">3</div>
+            <div
+                style="text-align:center;padding:28px 20px;background:#fff;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.04)">
+                <div
+                    style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;background:linear-gradient(135deg,#7c3aed,#8b5cf6);border-radius:50%;color:#fff;font-weight:900;font-size:1.2rem;margin-bottom:12px">
+                    3</div>
                 <h4 style="font-weight:700;margin-bottom:6px;font-size:0.95rem">Make Payment</h4>
-                <p style="font-size:0.82rem;color:var(--text-light);line-height:1.5">Pay securely — 92% goes to hospital, 8% platform fee</p>
+                <p style="font-size:0.82rem;color:var(--text-light);line-height:1.5">Pay securely — 92% goes to
+                    hospital, 8% platform fee</p>
             </div>
-            <div style="text-align:center;padding:28px 20px;background:#fff;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.04)">
-                <div style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;background:linear-gradient(135deg,#059669,#10b981);border-radius:50%;color:#fff;font-weight:900;font-size:1.2rem;margin-bottom:12px">4</div>
+            <div
+                style="text-align:center;padding:28px 20px;background:#fff;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.04)">
+                <div
+                    style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;background:linear-gradient(135deg,#059669,#10b981);border-radius:50%;color:#fff;font-weight:900;font-size:1.2rem;margin-bottom:12px">
+                    4</div>
                 <h4 style="font-weight:700;margin-bottom:6px;font-size:0.95rem">Nurse Assigned</h4>
-                <p style="font-size:0.82rem;color:var(--text-light);line-height:1.5">Hospital assigns a nurse who contacts you directly</p>
+                <p style="font-size:0.82rem;color:var(--text-light);line-height:1.5">Hospital assigns a nurse who
+                    contacts you directly</p>
             </div>
         </div>
     </section>
@@ -101,29 +131,40 @@
     </section>
 
     <!-- WHY CHOOSE US -->
-    <section style="background: linear-gradient(135deg, #0d47a1 0%, #1565c0 50%, #0d9488 100%); color: white; padding: 60px 20px; text-align: center; position:relative; overflow:hidden;">
-        <div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 0%, rgba(255,255,255,0.06) 0%, transparent 50%)"></div>
+    <section
+        style="background: linear-gradient(135deg, #0d47a1 0%, #1565c0 50%, #0d9488 100%); color: white; padding: 60px 20px; text-align: center; position:relative; overflow:hidden;">
+        <div
+            style="position:absolute;inset:0;background:radial-gradient(circle at 50% 0%, rgba(255,255,255,0.06) 0%, transparent 50%)">
+        </div>
         <div style="max-width: 800px; margin: 0 auto; position:relative; z-index:1;">
-            <div style="display:inline-flex;align-items:center;justify-content:center;width:72px;height:72px;background:rgba(255,255,255,0.12);border-radius:50%;margin-bottom:16px;font-size:2.5rem;backdrop-filter:blur(6px);border:2px solid rgba(255,255,255,0.15)">💙</div>
-            <h2 style="font-size: 2rem; font-weight: 900; margin-bottom: 12px;">Why Choose MotherWish Senior Care?</h2>
-            <p style="opacity: 0.9; margin-bottom: 32px; font-size: 1.05rem;">We connect you with India's most trusted hospitals for home nursing services.</p>
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;text-align:center">
-                <div style="background:rgba(255,255,255,0.1);border-radius:14px;padding:24px 16px;backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,0.1)">
+            <div
+                style="display:inline-flex;align-items:center;justify-content:center;width:72px;height:72px;background:rgba(255,255,255,0.12);border-radius:50%;margin-bottom:16px;font-size:2.5rem;backdrop-filter:blur(6px);border:2px solid rgba(255,255,255,0.15)">
+                💙</div>
+            <h2 style="font-size: 2rem; font-weight: 900; margin-bottom: 12px;">Why Choose Motherish Senior Care?</h2>
+            <p style="opacity: 0.9; margin-bottom: 32px; font-size: 1.05rem;">We connect you with India's most trusted
+                hospitals for home nursing services.</p>
+            <div
+                style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;text-align:center">
+                <div
+                    style="background:rgba(255,255,255,0.1);border-radius:14px;padding:24px 16px;backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,0.1)">
                     <div style="font-size:2rem;margin-bottom:8px">✅</div>
                     <h4 style="font-weight:700;font-size:0.9rem;margin-bottom:4px">Verified Nurses</h4>
                     <p style="font-size:0.78rem;opacity:0.8">Background-checked, certified professionals</p>
                 </div>
-                <div style="background:rgba(255,255,255,0.1);border-radius:14px;padding:24px 16px;backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,0.1)">
+                <div
+                    style="background:rgba(255,255,255,0.1);border-radius:14px;padding:24px 16px;backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,0.1)">
                     <div style="font-size:2rem;margin-bottom:8px">🏥</div>
                     <h4 style="font-weight:700;font-size:0.9rem;margin-bottom:4px">Hospital Backed</h4>
                     <p style="font-size:0.78rem;opacity:0.8">Nurses from reputed hospitals you trust</p>
                 </div>
-                <div style="background:rgba(255,255,255,0.1);border-radius:14px;padding:24px 16px;backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,0.1)">
+                <div
+                    style="background:rgba(255,255,255,0.1);border-radius:14px;padding:24px 16px;backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,0.1)">
                     <div style="font-size:2rem;margin-bottom:8px">💰</div>
                     <h4 style="font-weight:700;font-size:0.9rem;margin-bottom:4px">Transparent Pricing</h4>
                     <p style="font-size:0.78rem;opacity:0.8">Clear breakdown — no hidden charges</p>
                 </div>
-                <div style="background:rgba(255,255,255,0.1);border-radius:14px;padding:24px 16px;backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,0.1)">
+                <div
+                    style="background:rgba(255,255,255,0.1);border-radius:14px;padding:24px 16px;backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,0.1)">
                     <div style="font-size:2rem;margin-bottom:8px">📞</div>
                     <h4 style="font-weight:700;font-size:0.9rem;margin-bottom:4px">24/7 Support</h4>
                     <p style="font-size:0.78rem;opacity:0.8">Round-the-clock assistance for any concerns</p>
@@ -141,22 +182,27 @@
                             <rect x="10" y="7" width="4" height="10" rx="1" />
                             <rect x="7" y="10" width="10" height="4" rx="1" />
                         </svg></div>
-                    <span class="logo-text" style="-webkit-text-fill-color:white">MotherWish</span>
+                    <span class="logo-text" style="-webkit-text-fill-color:white">Motherish</span>
                 </div>
-                <p>India's most trusted digital healthcare platform connecting patients, doctors, hospitals, and emergency services seamlessly.</p>
+                <p>India's most trusted digital healthcare platform connecting patients, doctors, hospitals, and
+                    emergency services seamlessly.</p>
             </div>
             <div class="footer-col">
-                <h5>Services</h5><a href="appointment.html">Book Appointment</a><a href="home.html">Emergency Ambulance</a><a href="home.html">Blood Bank</a><a href="selfcare.html">Lab Reports</a>
+                <h5>Services</h5><a href="appointment.html">Book Appointment</a><a href="home.html">Emergency
+                    Ambulance</a><a href="home.html">Blood Bank</a><a href="selfcare.html">Lab Reports</a>
             </div>
             <div class="footer-col">
-                <h5>Hospitals</h5><a href="categories.html">Apollo Hospitals</a><a href="categories.html">Fortis Healthcare</a><a href="categories.html">Narayana Health</a><a href="categories.html">Max Healthcare</a>
+                <h5>Hospitals</h5><a href="categories.html">Apollo Hospitals</a><a href="categories.html">Fortis
+                    Healthcare</a><a href="categories.html">Narayana Health</a><a href="categories.html">Max
+                    Healthcare</a>
             </div>
             <div class="footer-col">
-                <h5>Support</h5><a href="help.html">Help Center</a><a href="help.html">Contact Us</a><a href="#">Privacy Policy</a><a href="#">Terms of Service</a>
+                <h5>Support</h5><a href="help.html">Help Center</a><a href="help.html">Contact Us</a><a href="#">Privacy
+                    Policy</a><a href="#">Terms of Service</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2024 MotherWish. All rights reserved. | Made with ❤️ in India</p>
+            <p>© 2024 Motherish. All rights reserved. | Made with ❤️ in India</p>
             <p>🏥 Registered under Ministry of Health & Family Welfare, Govt. of India</p>
         </div>
     </footer>
@@ -189,16 +235,19 @@
             <button class="quick-btn" onclick="quickChat('Emergency')">🚨 Emergency</button>
         </div>
         <div class="chat-input">
-            <button class="voice-btn" id="voiceBtn" onclick="startVoiceInput()" title="Voice chat with Dr. Myra">🎤</button>
-            <input type="text" placeholder="Ask Dr. Myra anything..." id="chatIn" onkeypress="if(event.key==='Enter')sendChat()">
+            <button class="voice-btn" id="voiceBtn" onclick="startVoiceInput()"
+                title="Voice chat with Dr. Myra">🎤</button>
+            <input type="text" placeholder="Ask Dr. Myra anything..." id="chatIn"
+                onkeypress="if(event.key==='Enter')sendChat()">
             <button class="chat-send" onclick="sendChat()">Send</button>
         </div>
     </div>
 
     <!-- LOGIN MODAL -->
-    <div class="modal-overlay" id="loginModal" style="display:none" onclick="if(event.target===this)this.style.display='none'">
+    <div class="modal-overlay" id="loginModal" style="display:none"
+        onclick="if(event.target===this)this.style.display='none'">
         <div class="modal-box">
-            <h2 style="text-align:center;margin-bottom:20px">Welcome to MotherWish</h2>
+            <h2 style="text-align:center;margin-bottom:20px">Welcome to Motherish</h2>
             <div class="auth-tabs">
                 <button class="auth-tab active" id="loginTabBtn" onclick="switchAuthTab('login')">Login</button>
                 <button class="auth-tab" id="signupTabBtn" onclick="switchAuthTab('signup')">Sign Up</button>
@@ -216,18 +265,21 @@
                     <input type="text" placeholder="Mobile Number" id="signupMobile">
                     <input type="password" placeholder="Password" id="signupPassword">
                     <input type="password" placeholder="Confirm Password" id="signupConfirm">
-                    <button class="btn btn-secondary" style="width:100%;padding:12px" onclick="doSignup()">Create Account</button>
+                    <button class="btn btn-secondary" style="width:100%;padding:12px" onclick="doSignup()">Create
+                        Account</button>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- BOOKING MODAL -->
-    <div class="modal-overlay" id="bookingModal" style="display:none" onclick="if(event.target===this)this.style.display='none'">
+    <div class="modal-overlay" id="bookingModal" style="display:none"
+        onclick="if(event.target===this)this.style.display='none'">
         <div class="modal-box" style="max-width:520px;text-align:left;padding:36px">
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px">
                 <h2 style="font-size:1.4rem;font-weight:800;margin:0" id="bookingModalTitle">📋 Book Home Nurse</h2>
-                <button onclick="document.getElementById('bookingModal').style.display='none'" style="background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--text-light)">&times;</button>
+                <button onclick="document.getElementById('bookingModal').style.display='none'"
+                    style="background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--text-light)">&times;</button>
             </div>
             <div id="bookingModalContent">
                 <!-- Step 1: Form (injected by JS) -->

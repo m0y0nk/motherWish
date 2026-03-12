@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 """
-MotherWish — Medicine Management System Patch Script
+Motherish — Medicine Management System Patch Script
 =======================================================
 Golden Path: This script serves as a REFERENCE/DOCUMENTATION only.
 The agent (Claude) injects CSS/HTML/JS directly via the Edit tool into
-/tmp/MotherWish.html using three targeted Edit calls.
+/tmp/Motherish.html using three targeted Edit calls.
 Do NOT try to run this script as the primary workflow — use the Edit tool.
 
 Reference: miniapp_id CmpYCbM-AR
 
-Injection Points in MotherWish.html
+Injection Points in Motherish.html
 --------------------------------------
 1. CSS  → insert before closing </style> tag
 2. HTML → insert before <!-- FOOTER --> comment
@@ -244,7 +244,7 @@ JS_ANCHOR_OLD   = "observer.observe(document.querySelector('.hero-stats'));\n</s
 NAV_ANCHOR_OLD  = '<a href="#help">Help</a>\n  </div>'
 
 if __name__ == "__main__":
-    print("MotherWish Medicine Management Patch — reference script.")
-    print("Agent uses Edit tool to inject CSS/HTML/JS into /tmp/MotherWish.html.")
+    print("Motherish Medicine Management Patch — reference script.")
+    print("Agent uses Edit tool to inject CSS/HTML/JS into /tmp/Motherish.html.")
     print(f"Medicines: {len(RX_MEDS)}, Guides: {len(HOW_TO_USE_GUIDES)}, Langs: {len(LANG_DATA)}")
     print("Run the agentapp logic instead of this script directly.")

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'MotherWish-v1';
+const CACHE_NAME = 'Motherish-v1';
 const ASSETS = [
     '/',
     '/static/css/styles.css',
