@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Senior Care — Home Nursing | MotherWish</title>
+    <meta name="description" content="Book professional home nursing services for elderly care. Choose from trusted hospitals, book a nurse, and get care delivered to your doorstep.">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- NAV -->
+    <nav class="navbar">
+        <a href="home.html" class="logo">
+            <div class="logo-icon"><svg viewBox="0 0 24 24">
+                    <rect x="10" y="7" width="4" height="10" rx="1" />
+                    <rect x="7" y="10" width="10" height="4" rx="1" />
+                </svg></div>
+            <span class="logo-text">MotherWish</span>
+        </a>
+        <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+        <div class="nav-links" id="navLinks">
+            <a href="home.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="insurance.html">Insurance</a>
+            <a href="categories.html">Categories</a>
+            <a href="selfcare.html">Self Care</a>
+            <a href="appointment.html">Book Appointment</a>
+            <a href="medicines.html">My Medicines</a>
+            <a href="help.html">Help</a>
+        </div>
+        <div class="nav-right">
+            <div class="search-bar">
+                <svg viewBox="0 0 24 24">
+                    <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zM9.5 14A4.5 4.5 0 1114 9.5 4.494 4.494 0 019.5 14z" />
+                </svg>
+                <input type="text" placeholder="Search doctors & hospitals...">
+            </div>
+            <button class="btn btn-primary" id="authBtn" onclick="document.getElementById('loginModal').style.display='flex'">Login / Sign Up</button>
+            <div class="dark-mode-toggle off" id="darkModeToggle" onclick="toggleDarkMode()">
+                <div class="toggle-track">
+                    <div class="toggle-thumb"></div>
+                </div>
+                <span class="toggle-label-light">☀️</span><span class="toggle-label-dark">🌙</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO BANNER -->
+    <section class="hero" style="text-align:center; position:relative; overflow:hidden; margin-bottom:-1px;">
+        <div style="position:absolute;inset:0;background:radial-gradient(circle at 20% 80%, rgba(255,255,255,0.06) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(99,102,241,0.08) 0%, transparent 40%);"></div>
+        <div style="max-width: 740px; margin: 0 auto; position:relative; z-index:1;">
+            <div style="display:inline-flex;align-items:center;justify-content:center;width:80px;height:80px;background:rgba(255,255,255,0.15);border-radius:50%;margin-bottom:20px;font-size:2.8rem;backdrop-filter:blur(8px);border:2px solid rgba(255,255,255,0.2)">🏠</div>
+            <h1 style="font-size: 2.8rem; margin-bottom: 16px; font-weight: 900;">Senior Care — Home Nursing</h1>
+            <p style="font-size: 1.15rem; opacity: 0.92; margin-bottom: 36px; line-height: 1.7; max-width:600px; margin-left:auto; margin-right:auto;">
+                Professional home nursing for your loved ones. Choose a trusted hospital, book a nurse, and get quality care delivered to your doorstep.
+            </p>
+            <div class="hero-btns" style="justify-content: center; gap: 12px; flex-wrap: wrap;">
+                <a href="#nursingHospitals" class="btn-hero btn-hero-white" style="font-weight:700">🏥 View Hospitals</a>
+                <a href="#howItWorks" class="btn-hero btn-hero-outline" style="border-color:#fff;color:#fff;font-weight:700">📋 How It Works</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="howItWorks" style="background: linear-gradient(180deg, #e0f2f1 0%, #f5f5f5 100%) !important; padding: 48px 20px; margin-top:-2px; padding-top:50px;">
+        <div class="section-title">📋 How It Works</div>
+        <div class="section-sub">Simple 4-step process to get a nurse at home</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;max-width:900px;margin:32px auto 0">
+            <div style="text-align:center;padding:28px 20px;background:#fff;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.04);position:relative">
+                <div style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;background:linear-gradient(135deg,#0d9488,#0891b2);border-radius:50%;color:#fff;font-weight:900;font-size:1.2rem;margin-bottom:12px">1</div>
+                <h4 style="font-weight:700;margin-bottom:6px;font-size:0.95rem">Choose Hospital</h4>
+                <p style="font-size:0.82rem;color:var(--text-light);line-height:1.5">Browse hospitals offering home nursing services</p>
+            </div>
+            <div style="text-align:center;padding:28px 20px;background:#fff;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.04)">
+                <div style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;background:linear-gradient(135deg,#2563eb,#3b82f6);border-radius:50%;color:#fff;font-weight:900;font-size:1.2rem;margin-bottom:12px">2</div>
+                <h4 style="font-weight:700;margin-bottom:6px;font-size:0.95rem">Fill Details</h4>
+                <p style="font-size:0.82rem;color:var(--text-light);line-height:1.5">Enter patient info, care type, and preferred timing</p>
+            </div>
+            <div style="text-align:center;padding:28px 20px;background:#fff;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.04)">
+                <div style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;background:linear-gradient(135deg,#7c3aed,#8b5cf6);border-radius:50%;color:#fff;font-weight:900;font-size:1.2rem;margin-bottom:12px">3</div>
+                <h4 style="font-weight:700;margin-bottom:6px;font-size:0.95rem">Make Payment</h4>
+                <p style="font-size:0.82rem;color:var(--text-light);line-height:1.5">Pay securely — 92% goes to hospital, 8% platform fee</p>
+            </div>
+            <div style="text-align:center;padding:28px 20px;background:#fff;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.04)">
+                <div style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;background:linear-gradient(135deg,#059669,#10b981);border-radius:50%;color:#fff;font-weight:900;font-size:1.2rem;margin-bottom:12px">4</div>
+                <h4 style="font-weight:700;margin-bottom:6px;font-size:0.95rem">Nurse Assigned</h4>
+                <p style="font-size:0.82rem;color:var(--text-light);line-height:1.5">Hospital assigns a nurse who contacts you directly</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOSPITALS OFFERING HOME NURSING -->
+    <section id="nursingHospitals">
+        <div class="section-title">🏥 Hospitals with Home Nursing</div>
+        <div class="section-sub">Trusted hospitals providing professional home nursing services</div>
+        <div class="hospitals-grid" id="nursingHospitalsGrid" style="max-width:1100px;margin:24px auto 0"></div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section style="background: linear-gradient(135deg, #0d47a1 0%, #1565c0 50%, #0d9488 100%); color: white; padding: 60px 20px; text-align: center; position:relative; overflow:hidden;">
+        <div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 0%, rgba(255,255,255,0.06) 0%, transparent 50%)"></div>
+        <div style="max-width: 800px; margin: 0 auto; position:relative; z-index:1;">
+            <div style="display:inline-flex;align-items:center;justify-content:center;width:72px;height:72px;background:rgba(255,255,255,0.12);border-radius:50%;margin-bottom:16px;font-size:2.5rem;backdrop-filter:blur(6px);border:2px solid rgba(255,255,255,0.15)">💙</div>
+            <h2 style="font-size: 2rem; font-weight: 900; margin-bottom: 12px;">Why Choose MotherWish Senior Care?</h2>
+            <p style="opacity: 0.9; margin-bottom: 32px; font-size: 1.05rem;">We connect you with India's most trusted hospitals for home nursing services.</p>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;text-align:center">
+                <div style="background:rgba(255,255,255,0.1);border-radius:14px;padding:24px 16px;backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,0.1)">
+                    <div style="font-size:2rem;margin-bottom:8px">✅</div>
+                    <h4 style="font-weight:700;font-size:0.9rem;margin-bottom:4px">Verified Nurses</h4>
+                    <p style="font-size:0.78rem;opacity:0.8">Background-checked, certified professionals</p>
+                </div>
+                <div style="background:rgba(255,255,255,0.1);border-radius:14px;padding:24px 16px;backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,0.1)">
+                    <div style="font-size:2rem;margin-bottom:8px">🏥</div>
+                    <h4 style="font-weight:700;font-size:0.9rem;margin-bottom:4px">Hospital Backed</h4>
+                    <p style="font-size:0.78rem;opacity:0.8">Nurses from reputed hospitals you trust</p>
+                </div>
+                <div style="background:rgba(255,255,255,0.1);border-radius:14px;padding:24px 16px;backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,0.1)">
+                    <div style="font-size:2rem;margin-bottom:8px">💰</div>
+                    <h4 style="font-weight:700;font-size:0.9rem;margin-bottom:4px">Transparent Pricing</h4>
+                    <p style="font-size:0.78rem;opacity:0.8">Clear breakdown — no hidden charges</p>
+                </div>
+                <div style="background:rgba(255,255,255,0.1);border-radius:14px;padding:24px 16px;backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,0.1)">
+                    <div style="font-size:2rem;margin-bottom:8px">📞</div>
+                    <h4 style="font-weight:700;font-size:0.9rem;margin-bottom:4px">24/7 Support</h4>
+                    <p style="font-size:0.78rem;opacity:0.8">Round-the-clock assistance for any concerns</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo" style="margin-bottom:12px">
+                    <div class="logo-icon"><svg viewBox="0 0 24 24">
+                            <rect x="10" y="7" width="4" height="10" rx="1" />
+                            <rect x="7" y="10" width="10" height="4" rx="1" />
+                        </svg></div>
+                    <span class="logo-text" style="-webkit-text-fill-color:white">MotherWish</span>
+                </div>
+                <p>India's most trusted digital healthcare platform connecting patients, doctors, hospitals, and emergency services seamlessly.</p>
+            </div>
+            <div class="footer-col">
+                <h5>Services</h5><a href="appointment.html">Book Appointment</a><a href="home.html">Emergency Ambulance</a><a href="home.html">Blood Bank</a><a href="selfcare.html">Lab Reports</a>
+            </div>
+            <div class="footer-col">
+                <h5>Hospitals</h5><a href="categories.html">Apollo Hospitals</a><a href="categories.html">Fortis Healthcare</a><a href="categories.html">Narayana Health</a><a href="categories.html">Max Healthcare</a>
+            </div>
+            <div class="footer-col">
+                <h5>Support</h5><a href="help.html">Help Center</a><a href="help.html">Contact Us</a><a href="#">Privacy Policy</a><a href="#">Terms of Service</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 MotherWish. All rights reserved. | Made with ❤️ in India</p>
+            <p>🏥 Registered under Ministry of Health & Family Welfare, Govt. of India</p>
+        </div>
+    </footer>
+
+    <!-- CHAT BOT -->
+    <button class="chatbot-btn" onclick="toggleChat()" title="Chat with Dr. Myra" id="MyraChatBtn">
+        <img src="{{ url_for('static', filename='icons/dr-Myra.png') }}" alt="Dr. Myra">
+    </button>
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header">
+            <div class="chat-header-image-wrap">
+                <img src="{{ url_for('static', filename='icons/dr-Myra.png') }}" alt="Dr. Myra" class="chat-avatar">
+                <span class="chat-avatar-online"></span>
+            </div>
+            <div class="chat-header-info">
+                <div class="chat-title">Dr. Myra</div>
+                <div class="chat-subtitle">🟢 Online · 24×7 AI Medical Assistant</div>
+            </div>
+            <button class="chat-close" onclick="toggleChat()">✕</button>
+        </div>
+        <div class="Myra-intro-banner">
+            Hello! I'm Dr. Myra – Your 24×7 AI Medical Assistant. 💙
+        </div>
+        <div class="chat-messages" id="chatMessages"></div>
+        <div class="chat-quick">
+            <button class="quick-btn" onclick="quickChat('Check Symptoms')">🩺 Check Symptoms</button>
+            <button class="quick-btn" onclick="quickChat('Book Doctor')">📅 Book Doctor</button>
+            <button class="quick-btn" onclick="quickChat('Find Hospital')">🏥 Find Hospital</button>
+            <button class="quick-btn" onclick="quickChat('Order Medicine')">💊 Medicine</button>
+            <button class="quick-btn" onclick="quickChat('Emergency')">🚨 Emergency</button>
+        </div>
+        <div class="chat-input">
+            <button class="voice-btn" id="voiceBtn" onclick="startVoiceInput()" title="Voice chat with Dr. Myra">🎤</button>
+            <input type="text" placeholder="Ask Dr. Myra anything..." id="chatIn" onkeypress="if(event.key==='Enter')sendChat()">
+            <button class="chat-send" onclick="sendChat()">Send</button>
+        </div>
+    </div>
+
+    <!-- LOGIN MODAL -->
+    <div class="modal-overlay" id="loginModal" style="display:none" onclick="if(event.target===this)this.style.display='none'">
+        <div class="modal-box">
+            <h2 style="text-align:center;margin-bottom:20px">Welcome to MotherWish</h2>
+            <div class="auth-tabs">
+                <button class="auth-tab active" id="loginTabBtn" onclick="switchAuthTab('login')">Login</button>
+                <button class="auth-tab" id="signupTabBtn" onclick="switchAuthTab('signup')">Sign Up</button>
+            </div>
+            <div id="loginForm">
+                <div class="login-form">
+                    <input type="text" placeholder="Mobile Number" id="loginEmail">
+                    <input type="password" placeholder="Password" id="loginPassword">
+                    <button class="btn btn-primary" style="width:100%;padding:12px" onclick="doLogin()">Login</button>
+                </div>
+            </div>
+            <div id="signupForm" style="display:none">
+                <div class="login-form">
+                    <input type="text" placeholder="Full Name" id="signupName">
+                    <input type="text" placeholder="Mobile Number" id="signupMobile">
+                    <input type="password" placeholder="Password" id="signupPassword">
+                    <input type="password" placeholder="Confirm Password" id="signupConfirm">
+                    <button class="btn btn-secondary" style="width:100%;padding:12px" onclick="doSignup()">Create Account</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOOKING MODAL -->
+    <div class="modal-overlay" id="bookingModal" style="display:none" onclick="if(event.target===this)this.style.display='none'">
+        <div class="modal-box" style="max-width:520px;text-align:left;padding:36px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px">
+                <h2 style="font-size:1.4rem;font-weight:800;margin:0" id="bookingModalTitle">📋 Book Home Nurse</h2>
+                <button onclick="document.getElementById('bookingModal').style.display='none'" style="background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--text-light)">&times;</button>
+            </div>
+            <div id="bookingModalContent">
+                <!-- Step 1: Form (injected by JS) -->
+            </div>
+        </div>
+    </div>
+
+    <!-- NOTIFICATION -->
+    <div class="notif" id="notif"></div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script>
+        // Hospital data for senior care
+        const nursingHospitals = [
+            { name: 'Apollo Home Healthcare', loc: 'Bannerghatta Rd, Bangalore', rating: 4.9, fee: 2000, services: ['Elder Care', 'Post-Surgery', 'Physiotherapy', 'Wound Care', 'IV/Injection'], color: '#0d9488' },
+            { name: 'Portea Medical', loc: 'Koramangala, Bangalore', rating: 4.8, fee: 1800, services: ['Elder Care', 'Critical Care', 'Mother & Baby', 'Physiotherapy'], color: '#2563eb' },
+            { name: 'Care24 Home Nursing', loc: 'HSR Layout, Bangalore', rating: 4.7, fee: 1500, services: ['Elder Care', 'Attendant Care', 'Medical Equipment', 'Physiotherapy'], color: '#7c3aed' },
+            { name: 'Nightingales Home Health', loc: 'Indiranagar, Bangalore', rating: 4.8, fee: 2200, services: ['Palliative Care', 'Post-Surgery', 'Ventilator Support', 'Elder Care'], color: '#059669' },
+            { name: 'Medwell Ventures', loc: 'Whitefield, Bangalore', rating: 4.6, fee: 1600, services: ['Elder Care', 'Wound Dressing', 'Physiotherapy', 'Diabetes Management'], color: '#e11d48' },
+            { name: 'Healers at Home', loc: 'Jayanagar, Bangalore', rating: 4.7, fee: 1400, services: ['Elder Care', 'Bedridden Patient', 'Post-Operative', 'Injection/IV'], color: '#d97706' }
+        ];
+
+        let selectedHospital = null;
+
+        // Render hospital cards
+        function initNursingHospitals() {
+            const grid = document.getElementById('nursingHospitalsGrid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            nursingHospitals.forEach((h, i) => {
+                const svcs = h.services.map(s => `<span class="facility-tag">${s}</span>`).join('');
+                grid.innerHTML += `<div class="hospital-card">
+                    <div class="hosp-top">
+                        <div>
+                            <div class="hosp-name">🏥 ${h.name}</div>
+                            <div class="hosp-location">📍 ${h.loc}</div>
+                        </div>
+                        <div class="hosp-rating">⭐ ${h.rating}</div>
+                    </div>
+                    <div style="margin:12px 0">
+                        <span style="display:inline-block;padding:4px 12px;background:#e8f5e9;color:#2e7d32;border-radius:20px;font-size:0.78rem;font-weight:700">✅ Home Nursing Available</span>
+                        <span style="display:inline-block;padding:4px 12px;background:#e3f2fd;color:#1565c0;border-radius:20px;font-size:0.78rem;font-weight:700;margin-left:6px">₹${h.fee.toLocaleString()}/day</span>
+                    </div>
+                    <div class="facilities">${svcs}</div>
+                    <div class="hosp-actions">
+                        <button class="btn btn-primary" style="flex:1" onclick="openBooking(${i})">📋 Book Nurse</button>
+                        <button class="btn btn-secondary" style="flex:1" onclick="showNotif('📞 Calling ${h.name}...')">📞 Call</button>
+                    </div>
+                </div>`;
+            });
+        }
+
+        // Open booking modal — Step 1: Form
+        function openBooking(index) {
+            selectedHospital = nursingHospitals[index];
+            document.getElementById('bookingModalTitle').textContent = '📋 Book Home Nurse';
+            document.getElementById('bookingModalContent').innerHTML = `
+                <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:12px 16px;margin-bottom:20px;display:flex;align-items:center;gap:10px">
+                    <span style="font-size:1.5rem">🏥</span>
+                    <div>
+                        <div style="font-weight:700;font-size:0.95rem">${selectedHospital.name}</div>
+                        <div style="font-size:0.8rem;color:var(--text-light)">₹${selectedHospital.fee.toLocaleString()}/day · ⭐ ${selectedHospital.rating}</div>
+                    </div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:14px">
+                    <input type="text" id="scPatientName" placeholder="Patient Name" style="width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-size:0.95rem;background:var(--bg);color:var(--text)">
+                    <input type="number" id="scAge" placeholder="Age" min="1" max="120" style="width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-size:0.95rem;background:var(--bg);color:var(--text)">
+                    <select id="scHelpType" style="width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-size:0.95rem;background:var(--bg);color:var(--text)">
+                        <option value="" disabled selected>Type of Help Needed</option>
+                        <option>Elder Care / Daily Assistance</option>
+                        <option>Post-Surgery Recovery</option>
+                        <option>Physiotherapy</option>
+                        <option>Wound Care / Dressing</option>
+                        <option>IV / Injection Administration</option>
+                        <option>Palliative Care</option>
+                        <option>Bedridden Patient Care</option>
+                        <option>Critical Care Nursing</option>
+                        <option>Diabetes Management</option>
+                        <option>Other</option>
+                    </select>
+                    <input type="text" id="scLocation" placeholder="City / Area" style="width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-size:0.95rem;background:var(--bg);color:var(--text)">
+                    <textarea id="scAddress" placeholder="Full Address" rows="2" style="width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-size:0.95rem;background:var(--bg);color:var(--text);resize:vertical;font-family:inherit"></textarea>
+                    <select id="scTiming" style="width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-size:0.95rem;background:var(--bg);color:var(--text)">
+                        <option value="" disabled selected>Preferred Timing</option>
+                        <option>Morning (6 AM – 12 PM)</option>
+                        <option>Afternoon (12 PM – 6 PM)</option>
+                        <option>Evening (6 PM – 10 PM)</option>
+                        <option>Night (10 PM – 6 AM)</option>
+                        <option>Full Day (12 Hours)</option>
+                        <option>24 Hours</option>
+                    </select>
+                    <button class="btn btn-primary" style="width:100%;padding:14px;font-size:1rem;margin-top:4px;background:linear-gradient(135deg,#0d9488,#2563eb);border:none;font-weight:700;border-radius:12px" onclick="goToPayment()">Proceed to Payment →</button>
+                </div>
+            `;
+            document.getElementById('bookingModal').style.display = 'flex';
+        }
+
+        // Step 2: Payment
+        function goToPayment() {
+            const name = document.getElementById('scPatientName').value.trim();
+            const age = document.getElementById('scAge').value;
+            const helpType = document.getElementById('scHelpType').value;
+            const location = document.getElementById('scLocation').value.trim();
+            const address = document.getElementById('scAddress').value.trim();
+            const timing = document.getElementById('scTiming').value;
+
+            if (!name || !age || !helpType || !location || !address || !timing) {
+                showNotif('⚠️ Please fill in all fields.');
+                return;
+            }
+
+            // Store form data
+            window._bookingData = { name, age, helpType, location, address, timing };
+
+            const totalFee = selectedHospital.fee;
+            const platformFee = Math.round(totalFee * 0.08);
+            const hospitalReceives = totalFee - platformFee;
+
+            document.getElementById('bookingModalTitle').textContent = '💳 Payment';
+            document.getElementById('bookingModalContent').innerHTML = `
+                <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:12px 16px;margin-bottom:20px;display:flex;align-items:center;gap:10px">
+                    <span style="font-size:1.5rem">🏥</span>
+                    <div>
+                        <div style="font-weight:700;font-size:0.95rem">${selectedHospital.name}</div>
+                        <div style="font-size:0.8rem;color:var(--text-light)">Patient: ${name} · ${helpType}</div>
+                    </div>
+                </div>
+
+                <div style="background:var(--bg);border:1.5px solid var(--border);border-radius:12px;padding:20px;margin-bottom:20px">
+                    <h4 style="font-weight:700;font-size:0.95rem;margin-bottom:16px">Payment Breakdown</h4>
+                    <div style="display:flex;justify-content:space-between;margin-bottom:10px;font-size:0.9rem">
+                        <span style="color:var(--text-light)">Service Fee (per day)</span>
+                        <span style="font-weight:700">₹${totalFee.toLocaleString()}</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;margin-bottom:10px;font-size:0.9rem">
+                        <span style="color:var(--text-light)">Hospital Receives (92%)</span>
+                        <span style="font-weight:600;color:#059669">₹${hospitalReceives.toLocaleString()}</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;margin-bottom:10px;font-size:0.9rem">
+                        <span style="color:var(--text-light)">Platform Fee (8%)</span>
+                        <span style="font-weight:600;color:var(--text-light)">₹${platformFee.toLocaleString()}</span>
+                    </div>
+                    <div style="border-top:1.5px solid var(--border);margin-top:12px;padding-top:12px;display:flex;justify-content:space-between;font-size:1.05rem">
+                        <span style="font-weight:800">Total</span>
+                        <span style="font-weight:900;color:#0d9488">₹${totalFee.toLocaleString()}</span>
+                    </div>
+                </div>
+
+                <div style="display:flex;flex-direction:column;gap:10px">
+                    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+                        <label style="display:flex;align-items:center;gap:8px;padding:12px;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;font-size:0.85rem;font-weight:600;transition:border-color 0.2s" onclick="this.style.borderColor='#0d9488';this.parentElement.querySelectorAll('label').forEach(l=>{if(l!==this)l.style.borderColor=''})">
+                            <input type="radio" name="payMethod" value="upi" checked style="accent-color:#0d9488"> UPI
+                        </label>
+                        <label style="display:flex;align-items:center;gap:8px;padding:12px;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;font-size:0.85rem;font-weight:600;transition:border-color 0.2s" onclick="this.style.borderColor='#0d9488';this.parentElement.querySelectorAll('label').forEach(l=>{if(l!==this)l.style.borderColor=''})">
+                            <input type="radio" name="payMethod" value="card" style="accent-color:#0d9488"> Card
+                        </label>
+                        <label style="display:flex;align-items:center;gap:8px;padding:12px;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;font-size:0.85rem;font-weight:600;transition:border-color 0.2s" onclick="this.style.borderColor='#0d9488';this.parentElement.querySelectorAll('label').forEach(l=>{if(l!==this)l.style.borderColor=''})">
+                            <input type="radio" name="payMethod" value="netbanking" style="accent-color:#0d9488"> Net Banking
+                        </label>
+                    </div>
+                    <button class="btn btn-primary" style="width:100%;padding:14px;font-size:1rem;margin-top:8px;background:linear-gradient(135deg,#059669,#10b981);border:none;font-weight:700;border-radius:12px" onclick="confirmPayment()">💳 Pay ₹${totalFee.toLocaleString()}</button>
+                    <button style="width:100%;padding:10px;font-size:0.85rem;background:none;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;color:var(--text-light);font-weight:600" onclick="openBooking(nursingHospitals.indexOf(selectedHospital))">← Back to Form</button>
+                </div>
+            `;
+        }
+
+        // Step 3: Confirmation
+        function confirmPayment() {
+            const d = window._bookingData;
+            document.getElementById('bookingModalTitle').textContent = '✅ Booking Confirmed';
+            document.getElementById('bookingModalContent').innerHTML = `
+                <div style="text-align:center;padding:20px 0">
+                    <div style="display:inline-flex;align-items:center;justify-content:center;width:72px;height:72px;background:#e8f5e9;border-radius:50%;font-size:2.5rem;margin-bottom:16px">✅</div>
+                    <h3 style="font-size:1.3rem;font-weight:800;margin-bottom:8px;color:var(--text)">Booking Confirmed!</h3>
+                    <p style="color:var(--text-light);font-size:0.9rem;margin-bottom:24px">Your request has been sent to <strong>${selectedHospital.name}</strong></p>
+
+                    <div style="background:var(--bg);border:1.5px solid var(--border);border-radius:12px;padding:16px;text-align:left;margin-bottom:20px">
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:0.85rem">
+                            <div><span style="color:var(--text-light)">Patient:</span><br><strong>${d.name}</strong></div>
+                            <div><span style="color:var(--text-light)">Age:</span><br><strong>${d.age} years</strong></div>
+                            <div><span style="color:var(--text-light)">Care Type:</span><br><strong>${d.helpType}</strong></div>
+                            <div><span style="color:var(--text-light)">Timing:</span><br><strong>${d.timing}</strong></div>
+                            <div style="grid-column:span 2"><span style="color:var(--text-light)">Address:</span><br><strong>${d.address}, ${d.location}</strong></div>
+                        </div>
+                    </div>
+
+                    <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:14px;margin-bottom:20px">
+                        <p style="font-size:0.88rem;color:#065f46;font-weight:600;margin:0">🏥 ${selectedHospital.name} will assign a nurse and contact you within 2 hours.</p>
+                    </div>
+
+                    <div style="display:flex;gap:10px">
+                        <button class="btn btn-primary" style="flex:1;padding:12px" onclick="document.getElementById('bookingModal').style.display='none'">Done</button>
+                        <button class="btn btn-secondary" style="flex:1;padding:12px" onclick="window.location.href='home.html'">🏠 Home</button>
+                    </div>
+                </div>
+            `;
+            showNotif('✅ Booking confirmed! The hospital will contact you shortly.');
+        }
+
+        // Init on load
+        document.addEventListener('DOMContentLoaded', () => {
+            initNursingHospitals();
+            initDarkMode();
+            setActiveNav();
+            initAuth();
+            initSearch();
+        });
+    </script>
+</body>
+
+</html>
